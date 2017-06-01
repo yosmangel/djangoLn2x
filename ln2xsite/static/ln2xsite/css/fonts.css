@@ -1,0 +1,156 @@
+/* Here are defined the fonts colors and size for the whole website */
+/*
+Dark blue #0F2D41
+Blue #1B7CA3
+orange #F2971F
+lnx blue #1EB1ED
+lnx green #8fc440
+*/
+
+body {
+	font-family: "Dinff light", "Helvetica Neue", "Roboto", "Open Sans", Arial, sans-serif;
+    color: #555;
+    font-size: 14px;
+}
+
+.dark, .menu-icons .menu-icons-style, .tooltip {
+    color: #FFF;
+}
+
+.dark textarea, .dark input, a.btn, .dark select {
+    color: #FFF;
+}
+
+.map {
+    color: #0F2D41;
+}
+
+h1, h2 a, i.icon, .primary-color, .counter {
+    color: #F2971F;
+}
+
+h2 {
+    color: #1EB1ED;
+}
+
+h3 {
+    color: #0F2D41;
+}
+
+.dark h3 {
+    color: #1B7CA3;
+}
+
+h3 a {
+    color: #0F2D41;
+    font-weight: bold;
+}
+.dark h3 a {
+    color: #1B7CA3;
+}
+
+.header-v6 a {
+    color: #DDD;
+}
+
+.backgrounded-intro {
+    color: #FFF;
+}
+
+a {
+    color: #1EB1ED;
+    text-decoration: none;
+}
+
+a:hover, a:active, a:focus, #language_selector_form > select:hover {
+    color: #8fc440;
+}
+
+.tags-v2 li a.selected {
+    color: white;
+    background: #555;
+}
+.tags-v2 li a.selected:hover {
+    color: #555;
+    background: white;
+}
+
+.dark .tags-v2 li a {
+    color: white;
+}
+.dark .tags-v2 li a:hover {
+    color: #555;
+    background: white;
+}
+.dark .tags-v2 li a.selected {
+    color: #555;
+    background: white;
+}
+.dark .tags-v2 li a.selected:hover {
+    color: white;
+    background: transparent;
+}
+
+.mce-textbox.mce-multiline {
+    color: black;
+}
+
+.dropdown .active > a, .dropdown.active > a {
+    color: #1EB1ED;
+}
+
+hr.primary-color {
+    border-color: #F2971F;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 5px;
+	text-shadow: none;
+	font-weight: normal;
+}
+
+h1 i, h2 i, h3 i, h4 i, h5 i, h6 i {
+	margin-right: 5px;
+}
+
+small {
+    color: #8fc440;
+    font-size: 12px;
+}
+
+#topcontrol:after {
+    color: #fff;
+}
+
+.panel-ln2xblue {
+    border-color: #1EB1ED;
+}
+.panel-ln2xblue > .panel-heading {
+    background: #1EB1ED;
+}
+.panel-ln2xblue > .panel-heading h2 {
+    color: white;
+    font-size: 20px;
+}
+.panel-ln2xorange {
+    border-color: #F2971F;
+}
+.panel-ln2xorange > .panel-heading {
+    background: #F2971F;
+}
+.event .parallax-counter .counter span {
+    color: #1EB1ED;
+}
+.parallax-counter-v4 .row span.counter {
+    font-size: 50px;
+}
+.tag-box-v1:hover {
+    background: #FEC67D;
+}
+.dark .pagination > .active > a, .dark .pagination > .active > a:hover {
+    background: #F2971F;
+    color: white;
+}
+.checkbox {
+    text-align: left;
+}

@@ -1,0 +1,504 @@
+/* Add here all your css styles (customizations) */
+img {
+    max-width: 100%;
+    height: auto;
+}
+hr {
+    margin: 20px 0;
+}
+.more_link, .more_link a {
+    transition: all 0.5s ease-in-out;
+}
+.more_link_element, .more_link_element a {
+    text-align: right;
+}
+.more_link_row, .more_link_row a {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.rotate-div {
+    transition: all 0.7s ease-in-out;
+    display: inline-block;
+}
+.rotate-div:hover {
+    transform: rotate(360deg);
+}
+.owl-clients-v1 img {
+    filter: grayscale(100%) invert(83.3%);
+}
+#language_selector_form.sky-form {
+    padding: 0px;
+    border-radius: 13px;
+}
+.parallaxBg {
+    background: url("https://s3.eu-central-1.amazonaws.com/ln2ximages/Backgrounds/halfdoublecarboncomb.jpg")  fixed repeat;
+}
+.header-v6 .header-inner-left {
+    float: left;
+}
+.header-v6 .header-inner-left h1 {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    height: 70px;
+    line-height: 70px;
+    margin: 0;
+}
+.header-fixed-shrink .header-title {
+    opacity: 1;
+    display: block;
+    transition: opacity 1s;
+}
+.header-title {
+    opacity: 0;
+    display: none;
+    max-width: 23%;
+    max-width: calc(100% - 230px);
+}
+.header-title h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.mini-title {
+    display: block;
+}
+.long-title {
+    display: none;
+}
+.little-title {
+    display: none;
+}
+@media (min-width: 992px) {
+    .header-title {
+        max-width: 75%;
+    }
+}
+@media (min-width: 1200px) {
+    .header-title {
+        max-width: 80%;
+    }
+}
+#language_selector_form select {
+    height: 31px;
+    width: 31px;
+    padding: 2px;
+    text-transform: uppercase;
+    background: transparent;
+    border: none;
+}
+.header-fixed-shrink .navbar-toggle {
+    display: inline-block;
+}
+.header-inner-right .menu-icons .navbar-toggle {
+    margin: 0;
+    padding: 21px 0 0 0;
+}
+.header-fixed-shrink .navbar-collapse.navbar-responsive-collapse.collapse {
+    display: none;
+}
+.header-fixed-shrink .navbar-collapse.navbar-responsive-collapse.collapse.in {
+    display: inline-block;
+    float: right;
+}
+@media (max-width: 991px) {
+    .header-fixed .header-v6.header-dark-transparent.header-sticky {
+        position: relative;
+    }
+    .header-fixed .header-v6.header-dark-transparent.header-sticky.header-fixed-shrink {
+        position: fixed;
+    }
+}
+.endless_container {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+.desktop .grid-boxes .endless_container, .desktop .testimonials-v6 {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.blog_masonry_3col .grid-boxes-in, .blog_masonry_3col .testimonials-info {
+    width: 100%;
+    margin: 1%;
+}
+@media (min-width: 768px) {
+    .blog_masonry_3col .grid-boxes-in, .blog_masonry_3col .testimonials-info {
+        width: 46%;
+    }
+}
+@media (min-width: 992px) {
+    .blog_masonry_3col .grid-boxes-in, .blog_masonry_3col .testimonials-info {
+        width: 30.5%;
+    }
+}
+.header-v6.header-dark-transparent .search-open .form-control {
+    font-size: 18px;
+    padding: 0;
+}
+.header-fixed .header-v6.header-fixed-shrink .search-open .form-control, .header-v6.header-dark-transparent.header-fixed-shrink .search-open .form-control {
+    font-size: 18px;
+}
+.header-v6.header-dark-transparent .search-open .form-control input, .header-v6.header-dark-transparent .search-open .form-control select {
+    border: RGBA(135, 135, 135, 0.5) 1px solid;
+    width: 100%;
+    padding: 0 2px;
+    margin: 2px 0;
+    height: 68px;
+}
+.wrapper .sky-form input:hover, .wrapper .sky-form select:hover, .wrapper .sky-form textarea:hover, .wrapper .sky-form i:hover, .wrapper .sky-form .ui-slider-handle:hover {
+    border-color: #1EB1ED;
+}
+.dark .sky-form input:hover, .dark .sky-form select:hover, .dark .sky-form textarea:hover, .dark .sky-form i:hover, .dark .sky-form .ui-slider-handle:hover {
+    border-color: #1B7CA3;
+}
+
+form.sky-form{
+    margin: 10px 0px;
+}
+
+.dark form.sky-form {
+    background: rgba(48, 48, 48, 0.3);
+}
+.dark .sky-form input,
+.dark .sky-form select,
+.dark .sky-form textarea {
+    background: #272727;
+}
+
+.map {
+    height: 500px;
+}
+
+.service-block-v4 .service-desc .editable-form i {
+    display: inherit;
+    font-size: inherit;
+    margin-bottom: inherit;
+}
+.parallaxBg .service-block-v4, .dark .parallaxBg .service-block-v4 {
+    background: unset;
+}
+#rows .service-block-v4:after {
+    content: unset;
+}
+
+.team-v3 .team-hover .editable-form span {
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: inherit;
+}
+
+.team-v3 .team-hover .editable-form span, .team-v3 .team-hover .editable-form small {
+    display: inherit;
+}
+
+.team-v3 .team-hover .editable-form {
+    list-style: inherit;
+    text-align: inherit;
+    visibility: visible;
+}
+
+.dark .editable-form textarea, .dark .editable-form input, .editable-form a.btn, .editable-form select {
+    color: black;
+}
+
+.blog_masonry_3col .grid-boxes-in {
+    background: white;
+}
+
+.share-linkedin {
+    background-color: #0077B5;
+}
+
+.breadcrumb {
+    text-align: right;
+}
+.breadcrumbs-v3.img-v1 {
+    margin-bottom: 10px;
+}
+.breadcrumbs-v3 p {
+    text-transform: capitalize;
+}
+
+.lnx-icon-64px {
+    width: 64px;
+}
+.features i.icon-lg {
+    margin: 20px auto;
+}
+
+.event {
+    text-align: center;
+}
+.event li {
+    text-align: left;
+}
+
+.separator {
+    height: 140px;
+}
+/*
+.separator:after {
+    left: 2%;
+    bottom: 50%;
+    width: 96%;
+    content: " ";
+    height: 0%;
+    text-align: center;
+    position: absolute;
+    border: rgb(143, 196, 64) 2px solid;
+}
+*/
+.backgrounded-intro {
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+}
+.backgrounded-intro p {
+    margin: 0;
+}
+
+.event-item {
+    padding: 1%;
+    margin: 1%;
+    line-height: 1.5;
+    overflow: hidden;
+}
+.event-item img {
+    float:left;
+    margin: 1%;
+    max-height: 150px;
+}
+@media (max-width: 600px) {
+    .event-item img {
+        float: none;
+    }
+}
+.event-item h2, .event-item h4 {
+    margin: 0;
+    font-size: 20px;
+}
+.course-item img {
+    max-width: 100px;
+}
+
+form#filter {
+    padding: 0;
+}
+#filter.sky-form .toggle i {
+    left:90px;
+}
+#filter-title {
+    background: none;
+    color: inherit;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+@media (max-width: 750px) {
+    form#filter {
+        padding: 10px 0;
+    }
+}
+.sky-form .toggle input:checked + i::before, .dark .sky-form .checkbox input:checked + i {
+    background-color: #F2971F;
+}
+@media (max-width: 420px) {
+    .view-tenth p {
+        display: none;
+    }
+}
+@media (max-width: 768px) {
+    .view-tenth img {
+        width: 100%;
+    }
+}
+.view-tenth p {
+    height: 30%;
+}
+.profile-image img {
+    vertical-align: middle;
+    max-height: 100%;
+    max-width: 100%;
+    display: inline-block !important;
+    margin: auto;
+}
+.profile-image.photo img {
+    max-height: none;
+    max-width: none;
+    min-height: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: unset;
+    margin: 0 0 0 -3px;
+}
+.profile-image {
+    width: 150px;
+    margin: 10px auto;
+    overflow: hidden;
+    height: 150px;
+    border: #F2971F solid 3px;
+    border-radius: 100px;
+    position: relative;
+    z-index: 1;
+    background: white;
+    white-space: nowrap;
+    text-align: center;
+}
+.profile-image .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.logo-sponsor {
+    max-width: 200px;
+}
+
+.panel-body {
+    text-align: justify;
+}
+
+.center-lg-icon {
+    margin: 0 48%;
+    margin: 0 calc(50% - 26.5px/2);
+}
+
+.link-back {
+    font-size: 20px;
+}
+
+.tag-box-v1 {
+    transition: background ease-in-out 500ms;
+    min-height: 81px;
+}
+.grid-item.tag-box-v1 {
+    width: 24%;
+}
+.gutter-sizer {
+    width: 1.3%;
+}
+@media (max-width: 768px) {
+    .grid-item.tag-box-v1 {
+        width: 100%;
+    }
+    .gutter-sizer {
+        width: 0;
+    }
+}
+.parallax-quote-in p {
+    text-transform: capitalize;
+}
+.owl-carousel .side-hide {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    text-transform: none;
+}
+.owl-carousel .center .item {
+    opacity: 1;
+}
+
+ul.tags {
+    list-style: none;
+}
+.tags li {
+    float: left;
+    padding: 0 5px;
+}
+
+.tags-v2 {
+    text-align: center;
+}
+
+.email-event-item {
+    width: 210px;
+    height: 86px;
+    display: block;
+    float: left;
+    margin: 10px;
+    text-align: center;
+    line-height: 1.3;
+}
+.email-event-item > a >div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.parallaxBg.email-event-item:before {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.thumb-item {
+    width: 100%;
+    height: 0;
+    padding-top: 48.2%;
+    display: block;
+    float: left;
+    margin: 10px;
+    text-align: center;
+    line-height: 1.3;
+}
+.thumb-item > a > div {
+    position: absolute;
+    top: 25%;
+    height: 75%;
+    width: 100%;
+    color: black;
+}
+
+.parallaxBg.thumb-item:before {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.tag-logo {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    height: 40px;
+    width: 40px;
+}
+
+#filter.sky-form .toggle i.thumbnails-switch {
+    width: 26px;
+    left: 0;
+}
+.sky-form .toggle i.thumbnails-switch::after {
+    content: '';
+    background: url(https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/thumbnails_logo.png);
+    background-size: 100% 100%;
+    transition: background-size 0.5s ease-in;
+    width: 15px;
+    height: 15px;
+    left: 5px;
+    top: 2px;
+}
+
+.sky-form .toggle input:checked + i.thumbnails-switch::after {
+    content: '';
+    background: url(https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/thumbnails_logo.png);
+    background-size: 200% 67%;
+    width: 15px;
+    height: 15px;
+}
+.sky-form .toggle i.thumbnails-switch::before {
+    content: none;
+}
+
+.login-open .panel {
+    margin: 0;
+}
+.btn-u {
+    white-space: normal;
+}
+.sky-form .select select {
+    height: 30px;
+    padding: 3px 5px;
+}
+.sky-form .select i {
+    height: 2px;
+}
