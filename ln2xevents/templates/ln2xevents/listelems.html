@@ -1,0 +1,42 @@
+{% load mezzanine_tags i18n el_pagination_tags crispy_forms_tags %}
+{% if entry_list %}
+        {% paginate nb_entry entry_list using 'entry_list' as filter_list %}
+        {% get_pages %}
+        <div class="full-width text-center">
+            {{ pages }}
+        </div>
+        </div>
+        <div>
+            {% for entry in filter_list %}
+            {% include list_elem_template %}
+            <script type="application/ld+json">
+            {
+              "@context":"http://schema.org",
+              "@type":"ItemList",
+              "itemListElement":[
+                {
+                  "@type":"ListItem",
+                  "position":1,
+                  "url":"http://example.com/{{ event.get_absolute_url }}"
+                },
+                {
+                  "@type":"ListItem",
+                  "position":2,
+                  "url":"http://example.com/desserts/cherry-pie"
+                },
+                {
+                  "@type":"ListItem",
+                  "position":3,
+                  "url":"http://example.com/desserts/blueberry-pie"
+                }
+              ]
+            }
+            </script>
+            {% endfor %}
+        </div>
+        <div class="col-md-12 text-center">
+            {{ pages }}
+        </div>
+{% else %}
+    {{ no_entry.rich_text|richtext_filters|safe }}
+{% endif %}

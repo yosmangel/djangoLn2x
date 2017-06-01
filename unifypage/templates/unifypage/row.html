@@ -1,0 +1,420 @@
+{% load mezzanine_tags i18n mathfilters staticfiles testimonial_block columns_values el_pagination_tags unify_forms relative_elem page_contents unify_blog_tags %}
+
+{% lazy_paginate 12 row_entry_list %}
+{% show_current_number as page_number %}
+{% for toRow in row_entry_list %}
+    {% with toRow.row as row %}
+    {% if row.background != "" %}
+    <div class="parallaxBg" style="background:{% if row.is_fixed %}fixed {% endif %} {% if row.background == 'default_image' and page.unifypage.background %}{{ page.unifypage.background }}{% else %}{{ row.background }}{% endif %};" >
+    {% else %}
+    <div>
+    {% endif %}
+    {% if row.is_container %}
+        <div class="container row-reveal">
+            <div>
+                <div>
+    {% elif row.is_parallaxc3 %}
+        <div class="parallax-counter-v3">
+            <div class="container row-reveal">
+                <div class="row">
+    {% elif row.is_parallaxc4 %}
+        <div class="parallax-counter-v4">
+            <div class="container row-reveal content-sm">
+                <div class="row">
+    {% elif row.is_breadcrumb_3 %}
+        <div class="breadcrumbs-v3 img-v1 text-center">
+            <div class="container row-reveal">
+                <div>
+    {% elif row.is_service_block_4 %}
+        <div class="service-block-v4">
+            <div class="container row-reveal content-sm">
+                <div class="row" >
+    {% elif row.is_team_3 %}
+        <div class="team-v3">
+            <div class="container row-reveal content-sm">
+                <div class="row" >
+    {% elif row.is_testimonials_6 %}
+    <div class="{% if not row.background %}bg-color-light{% endif %}">
+            <div class="container row-reveal content-sm">
+                <div class="testimonials-v6 testimonials-wrap" >
+    {% elif row.is_owl_carousel or row.is_logo_owl_carousel %}
+        <div>
+            <div class="container row-reveal content-sm">
+                <div>
+    {% elif row.is_masonry %}
+        <div class="container row-reveal">
+            <div class="blog_masonry_3col{% if not request.user_agent.is_mobile %} desktop{% endif %}">
+                <div class="masonry-{{ page_number }} ">
+    {% elif row.is_basic_map %}
+        <div>
+            <div class="container row-reveal">
+                <div>
+    {% elif row.is_youtube_video %}
+        <div id="promo-video" class="fullheight video-business-img1">
+            <div id="video-{{ toRow.row.id }}"class="player" data-property="{videoURL:'http://youtu.be/{{ row.more_url }}',containment:'#promo-video',startAt:0,showControls:false,quality:'highres',mute:true,autoPlay:true,loop:true,opacity:1,realfullscreen:true}"></div>
+                <div class="row-reveal">
+    {% else %}
+        <div>
+            <div class="container row-reveal">
+                <div>
+    {% endif %}
+                <div class="{{ row.css_class }}">
+                    {% if row.is_youtube_video %}
+                    <div style="padding-top: {% if not request.user_agent.is_mobile %}20%{% else %} 0 {% endif %};">
+                        <div style="background-color: rgba(0,0,0,0.35);padding: 10px;">
+                            <div class="container valign__middle text-center">
+                                {% editable row.title %}
+                                <p class="color-light-orange margin-bottom-10 animated fadeInUp wow" data-wow-duration="1.5s" data-wow-delay=".5s" style="font-size: 18px; font-weight: 25px; font-weight: 400; padding: 3px 0;">
+                                    {{ row.title }}
+                                </p>
+                                {% endeditable %} 
+                                {% editable row.intro %}
+                                <h2 class="color-light-orange animated fadeInUp wow margin-bottom-20" data-wow-duration="1.5s" data-wow-delay="1s" style="font-size: 50px; line-height: 63px; font-weight: 600; border-bottom: solid 2px #F39510; border-top: solid 2px #F39510; display: inline-block; padding: 7px 0;">
+                                    {% if row.intro != "" %}   
+                                    {{ row.intro|richtext_filters|safe }}
+                                    {% endif %}
+                                </h2>
+                                {% endeditable %} 
+                            </div>
+                        </div>
+                    {% else %}
+                        {% if row.title != "" or row.intro != "" %}
+                        <div class="headline-center margin-bottom-60">
+                            {% if row.title != "" %}
+                            {% if row.is_breadcrumb_3 %}
+                                <h1>
+                                    {% editable row.title %}
+                                    {{ row.title }}
+                                    {% endeditable %} 
+                                </h1>
+                            {% else %}
+                                <h2>
+                                    {% editable row.title %}
+                                    {{ row.title }}
+                                    {% endeditable %} 
+                                </h2>
+                            {% endif %}
+                            {% endif %}
+                            {% if not row.is_basic_map %}
+                            {% editable row.intro %}
+                            {% if row.intro != "" %}   
+                            {{ row.intro|richtext_filters|safe }}
+                            {% endif %}
+                            {% endeditable %} 
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    {% endif %}
+                    {% if row.is_owl_carousel or row.is_logo_owl_carousel %}
+                    <div class="owl-carousel owl-{{ page_number }}">
+                    {% endif %}
+                    {% if row.is_basic_map %}
+                        {% editable row.intro %}
+                        <div id="{{ row.name }}" class="map">
+                        </div>
+                        {% endeditable %}
+                    {% else %}
+                    {% with elements=row.elements.all elemnb=row.elements.all|length %}
+                    {% for element in elements %}
+                        {% if not row.is_owl_carousel and not row.is_logo_owl_carousel %}
+                        <div class="{{ element.css_class }} {{ element|colums_values:elemnb}} md-margin-bottom-10">
+                        {% else %}
+                        <div class="{{ element.css_class }}">
+                        {% endif %}
+                        {% if element.is_row_dependant %}
+                            {% if row.is_service_block_4 %}
+                            <div class="service-desc md-magin-bottom-50">
+                                {{ element.icon|richtext_filters|safe }}
+                                {% editable element.title %}
+                                <h3>{{ element.title }}</h3>
+                                {% endeditable %} 
+
+                                {% editable element.content %}
+                                <p class="no-margin-bottom">{{ element.pfcontent|richtext_filters|safe }}</p>
+                                {% endeditable %}
+                            </div>
+                            {% elif row.is_team_3 %}
+                            <div class="team-img">
+                                    {% editable element.icon_url %}
+                                <img class="img-responsive" src="{{ element.icon_url }}" alt="">
+                                    {% endeditable %} 
+                                <div class="team-hover">
+                                    {% editable element.title %}
+                                    <span>{{ element.title }}</span>
+                                    {% endeditable %} 
+
+                                    {% editable element.content %}
+                                    {{ element.pfcontent|richtext_filters|safe }}
+                                    {% endeditable %}
+                                </div>
+                            </div>
+                            {% else %}
+                            <div>
+                                {{ element.icon|richtext_filters|safe }}
+                                {% editable element.title %}
+                                <h3>{{ element.title }}</h3>
+                                {% endeditable %} 
+
+                                {% editable element.content %}
+                                {{ element.pfcontent|richtext_filters|safe }}
+                                {% endeditable %}
+                            </div>
+                            {% endif %}
+                        {% elif element.is_counter %}
+                            <div class="features">
+                                {{ element.icon|richtext_filters|safe }}
+                                {% editable element.content %}
+                                <span class="counter counter{{ page_number }}">
+                                    {{ element.pfcontent|richtext_filters|safe }}
+                                </span>
+                                {% endeditable %}
+                                {% if row.is_parallaxc4 %}
+                                <h4>
+                                    {% editable element.title %}
+                                    {{ element.title }}
+                                    {% endeditable %} 
+                                </h4>
+                                {% else %}
+                                <span>
+                                    {% editable element.title %}
+                                    {{ element.title }}
+                                    {% endeditable %} 
+                                </span>
+                                {% endif %}
+                            </div>
+                        {% elif element.is_progress_bar_v %}
+                            <div class="text-center">
+                                <div class="progress progress-u vertical bottom">
+                                    <div class="progress-bar progress-bar-u" role="progressbar" data-height="{{ element.content|richtext_filters|safe }}"></div>
+                                </div>
+                                {% editable element.content %}
+                                <span>{{ element.content|richtext_filters|safe }}%</span>
+                                {% endeditable %}
+                                {% editable element.title %}
+                                <div>{{ element.title }}</div>
+                                {% endeditable %}
+                            </div>
+                        {% elif element.is_testimonial %}
+                                {% editable element.title %}
+                                {% testimonials_blocks element.title LANGUAGE_CODE as testis %}
+                                {% if testis %}
+                                {% if row.is_masonry %}
+                                <div class="testimonials-v6">
+                                {% else %}
+                                <div class="owl-carousel owl-theme owl-testimonials-{{ page_number }}">
+                                {% endif %}
+                                    {{ testis|richtext_filters|safe }}
+                                </div>
+                                {% endif %}
+                                {% endeditable %}
+                        {% elif element.is_image %}
+                            {% if row.is_logo_owl_carousel %}
+                            <div class="profile-image">
+                                <span class="helper"></span>
+                                <img src="{{ element.icon_url }}" alt="">
+                            </div>
+                            {% else %}
+                            {% editable element.icon_url %}
+                            <div class="margin-top-20">
+                                <img src="{{ element.icon_url }}" alt="">
+                            </div>
+                            {% endeditable %}
+                            {% endif %}
+                        {% elif element.is_form %}
+                            {% unify_form element %}
+                        {% elif element.is_image_zoom %}
+                            <div class="view view-tenth">
+                                {% if element.is_formula %}
+                                    {% with  element|related_stuff:page.unifypage as elem %}
+                                <img class="img-responsive" src="{% if elem.icon_url %}{{ elem.icon_url }}{% else %}https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/default_miniature.png{% endif %}" alt="">
+                                <div class="mask">
+                                    <h2>{{ elem.title }}</h2>
+                                    <p>{{ elem.pfcontent|richtext_filters|safe }}</p>
+                                    <a href="{{ elem.more_url }}" class="info">{% trans 'Read More' %}</a>
+                                    {% endwith %}
+                                {% else %}
+                                <img class="img-responsive" src="{% if element.icon_url %}{{ element.icon_url }}{% else %}https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/default_miniature.png{% endif %}" alt="">
+                                <div class="mask">
+                                    {% editable element.title %}
+                                    <h2>{{ element.title }}</h2>
+                                    {% endeditable %} 
+
+                                    {% editable element.content %}
+                                    <p>{{ element.pfcontent|richtext_filters|safe }}</p>
+                                    {% endeditable %}
+                                    {% if element.more_url != "" %}
+                                    {% editable element.more_url %}
+                                    <a href="{{ element.more_url }}" class="info">{% trans 'Read More' %}</a>
+                                    {% endeditable %}
+                                    {% endif %}
+                                {% endif %}
+                                </div>
+
+                            </div>
+                        {% elif element.is_course_block and element.is_formula %}
+                            {% if element.title == 'all' %}
+                            <div class="owl-carousel owl-theme owl-next-sessions-{{ page_number }}">
+                                {% all_next_sessions LANGUAGE_CODE as next_sessions %}
+                                {% for entry in next_sessions %}
+                                {% include 'ln2xevents/events/eventslistelem.html' %}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                Not Implemented
+                            {% endif %}
+                        {% elif element.is_blog_post_block and element.is_formula %}
+                         {% editable element.title %}
+                            {% last_blogposts element.title as blogposts %}
+                            {% with blogposts|length as total %}
+                            {% for blog_post in blogposts %}
+                            <div class="col-md-{{ 12|intdiv:total }} bg-light">
+                                {% include 'blog/blog_post_list_elem.html' %}
+                            </div>
+                            {% endfor %}
+                            {% endwith %}
+                         {% endeditable %}
+                            
+                            
+                        {% else %}
+                            <div>
+                                {{ element.icon|richtext_filters|safe }}
+                                {% editable element.title %}
+                                <h3>{{ element.title }}</h3>
+                                {% endeditable %} 
+
+                                {% editable element.content %}
+                                {{ element.pfcontent|richtext_filters|safe }}
+                                {% endeditable %}
+                            </div>
+                        {% endif %}
+                        {% if not element.is_image_zoom %}
+                        {% if element.more_url != "" %}
+                        {% editable element.more_url %}
+                            <a class="btn btn-u" href="{{ element.more_url }}">{% trans 'See More' %}</a>
+                        {% endeditable %}
+                        {% endif %}
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+                    {% if row.is_owl_carousel or row.is_logo_owl_carousel %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    {% endif %}
+                    </div>
+                    {% if row.more_url != "" and not row.is_youtube_video%}
+                    <div class="more_link more_link_row col-xs-12">
+                    {% editable row.more_url %}
+                        <a class="btn btn-u" href="{{ row.more_url }}">{% trans 'See More' %}</a>
+                    {% endeditable %}
+                    </div>
+                    {% endif %}                       
+                </div>
+                </div>
+            </div>
+        </div>
+{% endwith %}
+{% endfor %}
+{% show_more %}
+<script>
+    jQuery(document).ready(function($) {
+        $('.counter{{ page_number }}').counterUp({
+            delay: 10,
+            time: 1000
+        });
+        ProgressBar.initProgressBarVertical();
+        $('.owl-{{ page_number }}').owlCarousel({
+            loop: true,
+            autoWidth: false,
+            margin: 20,
+            lazyLoad : true,
+            autoplay: true,
+            slideBy: 2,
+            items: 3,
+            responsive: {
+                768 : {
+                    items: 4,
+                },
+                992 : {
+                    items: 6,
+                }
+            }
+        });
+        $('.owl-testimonials-{{ page_number }}').owlCarousel({
+            loop: true,
+            autoWidth: false,
+            margin: 20,
+            lazyLoad : true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplaySpeed: 700,
+            items: 2,
+            responsive: {
+                768 : {
+                    items: 3,
+                },
+                992 : {
+                    items: 4,
+                }
+            }
+        });
+        $('.owl-next-sessions-{{ page_number }}').owlCarousel({
+            loop: false,
+            autoWidth: false,
+            margin: 20,
+            lazyLoad: true,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplaySpeed: 700,
+            items: 1,
+            responsive: {
+                768 : {
+                    items: 2,
+                },
+                992 : {
+                    items: 3,
+                }
+            }
+        });
+        $('#rows').endlessPaginate({
+            paginateOnScroll: true,
+            paginateOnScrollMargin: 600 + $('div.footer').height() + $('div.copyright').height() + 50,
+        });
+    });
+    {% for toRow in row_entry_list %}
+    {% if toRow.row.is_basic_map %}
+    jQuery(document).ready(function($) {
+        var map = new GMaps({
+            div: '#{{ toRow.row.name }}',
+            {{ toRow.row.intro }}
+        });
+        {% with elements=toRow.row.elements.all elemnb=toRow.row.elements.all|length %}
+        {% for element in elements %}
+        map.addMarker({
+            icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+            {{ element.content|richtext_filters|safe }}
+        });
+        {% endfor %}
+        {% endwith %}
+    });
+    {% elif toRow.row.is_masonry %}
+    {% if not request.user_agent.is_mobile %}
+    jQuery(document).ready(function($) {
+        $('.masonry-{{ page_number }}').masonry({
+            itemSelector: '.testimonials-info',
+        })
+    });
+    {% endif %}
+    {% elif toRow.row.is_youtube_video %}
+    {% if not request.user_agent.is_mobile %}
+    $(document).ready(function() {
+        if (!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+            $.getScript("{% static "ln2xsite/plugins/youtube-player/src/jquery.mb.YTPlayer.min.js" %}", function(){
+                $(".player").YTPlayer();
+            });
+        }
+    });
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+</script>

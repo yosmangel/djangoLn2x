@@ -1,0 +1,14 @@
+{% if session.session_format != 'BREAK' %}
+<div style="vertical-align: middle">
+<div class="item">
+    <p>
+        {{ session.public_name }}
+    </p>
+    {% if session.abstract %}
+    <small>
+        {{ session.abstract|striptags|truncatechars:150 }}
+    </small>
+    {% endif %}
+</div>
+</div>
+{% endif %}

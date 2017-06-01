@@ -1,0 +1,1432 @@
+# First translation
+# Copyright (C) 2016
+# This file is distributed under the same license as the ln2xsite package.
+# Stephane PERREZ <stephanep@liquidnexxus.com> 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: beta 1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-02 23:01+0000\n"
+"PO-Revision-Date: 2016-10-13 16:15+UTC+1\n"
+"Last-Translator: Stephane PERREZ <stephanep@liquidnexxus.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ln2xevents/filtermodels.py:23 ln2xevents/filtermodels.py:64
+msgid "Language"
+msgstr ""
+
+#: ln2xevents/filtermodels.py:28 ln2xevents/filtermodels.py:69
+msgid "Keywords"
+msgstr ""
+
+#: ln2xevents/filtermodels.py:32 ln2xevents/filtermodels.py:73
+#: ln2xevents/models.py:81
+msgid "Level"
+msgstr ""
+
+#: ln2xevents/filtermodels.py:37 ln2xevents/filtermodels.py:77
+msgid "Delivery Method"
+msgstr ""
+
+#: ln2xevents/filtermodels.py:41
+msgid "Regions"
+msgstr ""
+
+#: ln2xevents/filtermodels.py:44
+msgid "Start date"
+msgstr ""
+
+#: ln2xevents/filtermodels.py:45 unifypage/forms.py:36
+msgid "Course"
+msgstr "Formation"
+
+#: ln2xevents/filtermodels.py:80 ln2xevents/models.py:640
+#: ln2xevents/models.py:770 unifypage/models.py:112 unifypage/models.py:225
+msgid "Title"
+msgstr ""
+
+#: ln2xevents/models.py:22
+msgid "Expert"
+msgstr ""
+
+#: ln2xevents/models.py:23 ln2xevents/models.py:72
+msgid "Professional"
+msgstr ""
+
+#: ln2xevents/models.py:24
+msgid "Introductory"
+msgstr ""
+
+#: ln2xevents/models.py:28
+msgid "Asia"
+msgstr ""
+
+#: ln2xevents/models.py:29
+msgid "Europe, the Middle East and Africa"
+msgstr ""
+
+#: ln2xevents/models.py:30
+msgid "Latin America"
+msgstr ""
+
+#: ln2xevents/models.py:31
+msgid "North America"
+msgstr ""
+
+#: ln2xevents/models.py:32
+msgid "Oceania"
+msgstr ""
+
+#: ln2xevents/models.py:33
+msgid "The Caribbean"
+msgstr ""
+
+#: ln2xevents/models.py:34
+msgid "Other"
+msgstr ""
+
+#: ln2xevents/models.py:42
+msgid "Last Sync"
+msgstr ""
+
+#: ln2xevents/models.py:54
+msgid "Conference"
+msgstr ""
+
+#: ln2xevents/models.py:55
+msgid "Seminar"
+msgstr ""
+
+#: ln2xevents/models.py:56
+#, fuzzy
+#| msgid "Bespoke Training"
+msgid "Training"
+msgstr "Formation Personnalisée"
+
+#: ln2xevents/models.py:57
+#, fuzzy
+#| msgid "eLearning"
+msgid "e-Learning"
+msgstr "eLearning"
+
+#: ln2xevents/models.py:61
+msgid "Payment System Security, Risk & Compliance"
+msgstr ""
+
+#: ln2xevents/models.py:63
+msgid "Payment System Management"
+msgstr ""
+
+#: ln2xevents/models.py:65
+msgid "Information Security and Privacy"
+msgstr ""
+
+#: ln2xevents/models.py:67
+msgid "Secure Coding & Testing"
+msgstr ""
+
+#: ln2xevents/models.py:70
+msgid "Advanced"
+msgstr ""
+
+#: ln2xevents/models.py:71
+msgid "Foundation"
+msgstr ""
+
+#: ln2xevents/models.py:76
+msgid "Delivery Format"
+msgstr ""
+
+#: ln2xevents/models.py:78 ln2xevents/models.py:278 ln2xevents/models.py:778
+#: ln2xevents/models.py:875 magentrix/models.py:24 magentrix/models.py:33
+msgid "Language code"
+msgstr ""
+
+#: ln2xevents/models.py:79
+msgid "Banner"
+msgstr ""
+
+#: ln2xevents/models.py:80
+msgid "Thumb"
+msgstr ""
+
+#: ln2xevents/models.py:83
+msgid "Subject Category"
+msgstr ""
+
+#: ln2xevents/models.py:85
+msgid "Duration(min)"
+msgstr ""
+
+#: ln2xevents/models.py:86
+msgid "Agenda"
+msgstr ""
+
+#: ln2xevents/models.py:87
+msgid "Who Attends"
+msgstr ""
+
+#: ln2xevents/models.py:89
+msgid "Objectives"
+msgstr ""
+
+#: ln2xevents/models.py:90
+msgid "Pre-requisites"
+msgstr ""
+
+#: ln2xevents/models.py:91
+#, fuzzy
+#| msgid "Source"
+msgid "Ref/Source"
+msgstr "Source"
+
+#: ln2xevents/models.py:93
+msgid "Languages Availables"
+msgstr ""
+
+#: ln2xevents/models.py:95
+#, fuzzy
+#| msgid "Course Page"
+msgid "Course Level"
+msgstr "Page De Formations"
+
+#: ln2xevents/models.py:99
+msgid "Target Delegates"
+msgstr ""
+
+#: ln2xevents/models.py:113
+msgid "Course Page"
+msgstr "Page De Formations"
+
+#: ln2xevents/models.py:114
+msgid "Course Pages"
+msgstr "Pages de Formation"
+
+#: ln2xevents/models.py:192 ln2xevents/models.py:198 ln2xevents/models.py:470
+#: ln2xevents/models.py:476
+msgid "Next Sessions"
+msgstr ""
+
+#: ln2xevents/models.py:249 ln2xsite/settings.py:69 ln2xsite/settings.py:76
+msgid "Image URL"
+msgstr ""
+
+#: ln2xevents/models.py:270
+msgid "Event Page"
+msgstr ""
+
+#: ln2xevents/models.py:271
+msgid "Event Pages"
+msgstr "Page d'Événements"
+
+#: ln2xevents/models.py:279 ln2xevents/models.py:313
+msgid "Macro Region"
+msgstr ""
+
+#: ln2xevents/models.py:282
+msgid "Terms and Conditions"
+msgstr ""
+
+#: ln2xevents/models.py:285
+msgid "Start Date"
+msgstr ""
+
+#: ln2xevents/models.py:286 magentrix/models.py:14
+msgid "End Date"
+msgstr ""
+
+#: ln2xevents/models.py:287
+msgid "Early Bird Deadline"
+msgstr ""
+
+#: ln2xevents/models.py:289
+msgid "Display Agenda Days"
+msgstr ""
+
+#: ln2xevents/models.py:291
+msgid "Display Session Times"
+msgstr ""
+
+#: ln2xevents/models.py:293
+msgid "Event Times"
+msgstr "Horaires d'Événement"
+
+#: ln2xevents/models.py:295
+msgid "Number of Seats Left"
+msgstr ""
+
+#: ln2xevents/models.py:296
+msgid "Sold Out"
+msgstr ""
+
+#: ln2xevents/models.py:298
+msgid "Number of Attendee"
+msgstr ""
+
+#: ln2xevents/models.py:300
+msgid "Ticket Price"
+msgstr ""
+
+#: ln2xevents/models.py:302
+msgid "Standard Price"
+msgstr ""
+
+#: ln2xevents/models.py:304
+msgid "Nb Tickets Group Discount"
+msgstr ""
+
+#: ln2xevents/models.py:307
+msgid "Address"
+msgstr ""
+
+#: ln2xevents/models.py:309 ln2xsite/settings.py:94
+msgid "City"
+msgstr ""
+
+#: ln2xevents/models.py:311 ln2xsite/settings.py:88
+msgid "Country"
+msgstr ""
+
+#: ln2xevents/models.py:314
+msgid "Venue Description"
+msgstr ""
+
+#: ln2xevents/models.py:316
+msgid "Venue Name"
+msgstr ""
+
+#: ln2xevents/models.py:318
+msgid "Latitude"
+msgstr ""
+
+#: ln2xevents/models.py:320
+msgid "Longitude"
+msgstr ""
+
+#: ln2xevents/models.py:323
+msgid "Location Thumb"
+msgstr ""
+
+#: ln2xevents/models.py:325
+msgid "Speaker Intro"
+msgstr ""
+
+#: ln2xevents/models.py:326
+msgid "Sponsor Intro"
+msgstr ""
+
+#: ln2xevents/models.py:327
+msgid "Sponsor List Title"
+msgstr ""
+
+#: ln2xevents/models.py:563 ln2xevents/models.py:852
+msgid "URL"
+msgstr ""
+
+#: ln2xevents/models.py:636
+msgid "Speaker"
+msgstr ""
+
+#: ln2xevents/models.py:637
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:147
+msgid "Speakers"
+msgstr ""
+
+#: ln2xevents/models.py:639 ln2xevents/models.py:697 magentrix/models.py:22
+#: unifypage/models.py:455
+msgid "Name"
+msgstr ""
+
+#: ln2xevents/models.py:641 ln2xevents/models.py:701
+msgid "Account Name"
+msgstr "Nom du Compte"
+
+#: ln2xevents/models.py:646
+msgid "Bio"
+msgstr ""
+
+#: ln2xevents/models.py:647
+msgid "Custom Profile Image"
+msgstr ""
+
+#: ln2xevents/models.py:649 ln2xevents/models.py:716
+msgid "Custom Name"
+msgstr "Nom Personnalisé"
+
+#: ln2xevents/models.py:652
+msgid "Anonymous Contact Name"
+msgstr "Nom du Contact Anonyme"
+
+#: ln2xevents/models.py:654
+msgid "Anonymous Title Name"
+msgstr ""
+
+#: ln2xevents/models.py:656
+msgid "Anonymous Account Name"
+msgstr ""
+
+#: ln2xevents/models.py:657
+msgid "Speaker Country"
+msgstr ""
+
+#: ln2xevents/models.py:659
+msgid "Speaker Rating"
+msgstr ""
+
+#: ln2xevents/models.py:703
+#, fuzzy
+#| msgid "Account Name"
+msgid "Account Logo"
+msgstr "Nom du Compte"
+
+#: ln2xevents/models.py:704
+msgid "Account Description"
+msgstr ""
+
+#: ln2xevents/models.py:707
+msgid "Sponsor Type"
+msgstr ""
+
+#: ln2xevents/models.py:714
+msgid "Custom Description"
+msgstr ""
+
+#: ln2xevents/models.py:718
+#, fuzzy
+#| msgid "Custom Name"
+msgid "Custom Logo"
+msgstr "Nom Personnalisé"
+
+#: ln2xevents/models.py:767
+msgid "Page Content"
+msgstr ""
+
+#: ln2xevents/models.py:768
+msgid "Page Contents"
+msgstr ""
+
+#: ln2xevents/models.py:771
+msgid "Rich Text"
+msgstr ""
+
+#: ln2xevents/models.py:774 ln2xevents/models.py:850 unifypage/models.py:114
+#: unifypage/models.py:224 unifypage/models.py:454
+msgid "Type"
+msgstr ""
+
+#: ln2xevents/models.py:776
+msgid "Reference"
+msgstr ""
+
+#: ln2xevents/models.py:800
+msgid "Marketing Content"
+msgstr ""
+
+#: ln2xevents/models.py:801
+msgid "Marketing Contents"
+msgstr ""
+
+#: ln2xevents/models.py:810 ln2xevents/models.py:876 magentrix/models.py:25
+#: magentrix/models.py:34
+msgid "Creation Date"
+msgstr ""
+
+#: ln2xevents/models.py:874 magentrix/models.py:32
+msgid "Ranking"
+msgstr ""
+
+#: ln2xevents/models.py:878 magentrix/models.py:30
+msgid "Contact Title"
+msgstr "Titre du Contact"
+
+#: ln2xevents/models.py:882 magentrix/models.py:31
+msgid "Text"
+msgstr ""
+
+#: ln2xevents/models.py:884
+msgid "Featured"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/becomesponsormodalform.html:2
+msgid "Become a Sponsor"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/becomesponsormodalform.html:8
+msgid "Please fill the form if you are interested becoming a sponsor"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/becomesponsormodalform.html:79
+#: unifypage/templates/unifypage/contactform.html:64
+msgid "Send"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:53
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:45
+msgid "Days Remaining"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:60
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:52
+msgid "Days left for early bird"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:66
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:58
+msgid "seat(s) occupied"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:85
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:77
+msgid "seat(s) left"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:97
+msgid "Sponsors"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:115
+#: unifypage/elementtypes.py:20
+msgid "Testimonials"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:124
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:207
+msgid "Sessions"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:226
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:190
+msgid "View complete agenda and details"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:270
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:318
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:232
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:303
+msgid "View full list"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:339
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:350
+msgid "Venue"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/complexeventpage.html:359
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:374
+msgid "Enquiries"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/courseslistelem.html:15
+#: ln2xevents/templates/ln2xevents/events/eventslistelem.html:20
+msgid "More Info"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventagendapage.html:14
+#: ln2xevents/templates/ln2xevents/events/eventagendapage.html:98
+msgid "Back to main page"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:87
+msgid "Sold Out!"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:155
+msgid "View More Testimonials"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:380
+msgid "Your browser does not support iframes."
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:382
+msgid "Click here"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:384
+msgid " to open the registration page in a new tab"
+msgstr ""
+
+#: ln2xevents/templates/ln2xevents/events/eventpage.html:405
+#, fuzzy
+#| msgid "Schedule"
+msgid "View Full Schedule"
+msgstr "Agenda"
+
+#: ln2xevents/templates/ln2xevents/events/eventspeakerspage.html:15
+#: ln2xevents/templates/ln2xevents/events/eventspeakerspage.html:49
+#: ln2xevents/templates/ln2xevents/events/eventsponsorspage.html:13
+#: ln2xevents/templates/ln2xevents/events/eventsponsorspage.html:50
+msgid "Back to event"
+msgstr ""
+
+#: ln2xsite/settings.py:25
+msgid "Media Library"
+msgstr ""
+
+#: ln2xsite/settings.py:82
+msgid "Source"
+msgstr "Source"
+
+#: ln2xsite/settings.py:133
+msgid "English"
+msgstr "Anglais"
+
+#: ln2xsite/settings.py:134
+msgid "French"
+msgstr "Français"
+
+#: ln2xsite/settings.py:135
+msgid "Spanish"
+msgstr "Espagnol"
+
+#: magentrix/models.py:13
+msgid "Attendee Number"
+msgstr ""
+
+#: magentrix/models.py:18
+msgid "Opportunity Ratio"
+msgstr ""
+
+#: magentrix/models.py:23
+msgid "Description"
+msgstr ""
+
+#: magentrix/models.py:29
+msgid "Contact Name"
+msgstr "Nom du Contact"
+
+#: templates/accounts/account_login.html:9
+msgid ""
+"You're already logged in. If you'd like to log in as a different user, "
+"you'll need to log out first."
+msgstr ""
+
+#: templates/accounts/account_login.html:15
+#, python-format
+msgid ""
+"If you don't have an account you can <a href=\"%(signup_url)s?next=%(next)s"
+"\">sign up</a> for one now."
+msgstr ""
+
+#: templates/accounts/account_login.html:18
+#, python-format
+msgid ""
+"<p>You can also <a href=\"%(password_reset_url)s?next=%(profile_update_url)s"
+"\">reset your password</a> if you've forgotten it.</p>"
+msgstr ""
+
+#: templates/accounts/account_signup.html:8
+msgid ""
+"You're already logged in. If you'd like to create a new account, you'll need "
+"to log out first."
+msgstr ""
+
+#: templates/accounts/account_signup.html:14
+msgid ""
+"After signing up, your account will be reviewed for approval. You'll receive "
+"an email when your account is activated."
+msgstr ""
+
+#: templates/accounts/account_signup.html:18
+msgid ""
+"After signing up, you'll receive an email with a link you need to click, in "
+"order to activate your account."
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:4
+msgid "Logged in as: "
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:9
+msgid "Update profile"
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:14
+#: templates/accounts/includes/user_panel_nav.html:11
+msgid "Log out"
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:17
+#: templates/accounts/includes/user_panel_nav.html:14
+msgid "Log in"
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:18
+msgid "or"
+msgstr ""
+
+#: templates/accounts/includes/user_panel.html:20
+#: templates/accounts/includes/user_panel_nav.html:16
+msgid "Sign up"
+msgstr ""
+
+#: templates/base.html:263
+msgid ""
+"LiquidNexxus Limited | Company Registration No: 6959415 - | VAT Number - "
+"978380467"
+msgstr ""
+"LiquidNexxus Limited | Numéro RCS (UK CH): 6959415 - | Numéro TVA - "
+"GB978380467"
+
+#: templates/base.html:266
+msgid ""
+"Registered Office: International House, 142 Cromwell Road, KENSINGTON, "
+"London SW7 4EF, United Kingdom"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:46
+#: templates/blog/blog_post_detail.html:174
+msgid "Posted by"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:65
+#, python-format
+msgid "On %(sometime)s"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:78
+#, fuzzy
+#| msgid "Source"
+msgid "Source:"
+msgstr "Source"
+
+#: templates/blog/blog_post_detail.html:87
+#: templates/blog/blog_post_detail.html:98
+msgid "Tags:"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:114
+#: templates/generic/includes/comments.html:3 unifypage/forms.py:41
+msgid "Comments"
+msgstr "Commentaires"
+
+#: templates/blog/blog_post_detail.html:117
+#, python-format
+msgid "%(comments_count)s comment"
+msgid_plural "%(comments_count)s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/blog/blog_post_detail.html:126
+msgid "Share on Twitter"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:127
+msgid "Share on LinkedIn"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:128
+msgid "Share on Facebook"
+msgstr ""
+
+#: templates/blog/blog_post_detail.html:165
+msgid "Related posts"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:27
+msgid "Tag:"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:29
+msgid "Category:"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:33
+msgid "Author:"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:48
+msgid "Viewing posts tagged"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:50
+msgid "Viewing posts for category"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:52
+msgid "Viewing posts from"
+msgstr ""
+
+#: templates/blog/blog_post_list.html:55
+msgid "Viewing posts by"
+msgstr ""
+
+#: templates/blog/blog_post_list_elem.html:23
+#: templates/blog/blog_post_list_page.html:22
+msgid "By"
+msgstr "Par"
+
+#: templates/blog/blog_post_list_elem.html:30
+#: templates/blog/blog_post_list_page.html:29
+#: templates/generic/includes/comment.html:27
+#: templates/generic/includes/comment.html:64
+#: templates/twitter/tweets_lang_dep.html:24
+#, python-format
+msgid "%(sometime)s ago"
+msgstr ""
+
+#: templates/blog/blog_post_list_elem.html:50
+#: templates/blog/blog_post_list_page.html:61
+msgid "read more"
+msgstr "lire plus"
+
+#: templates/blog/blog_post_list_elem.html:56
+msgid "In"
+msgstr ""
+
+#: templates/blog/blog_post_list_page.html:52
+msgid "Tags"
+msgstr ""
+
+#: templates/captcha/image.html:3
+msgid "Play CAPTCHA as audio file"
+msgstr ""
+
+#: templates/cookielaw/banner.html:5
+msgid "COOKIE_INFO_HEADER"
+msgstr ""
+
+#: templates/cookielaw/banner.html:7
+msgid "COOKIE_INFO_OK"
+msgstr ""
+
+#: templates/cookielaw/banner.html:8
+msgid "COOKIE_INFO_PARA"
+msgstr ""
+
+#: templates/el_pagination/show_more.html:5
+#, fuzzy
+#| msgid "read more"
+msgid "more"
+msgstr "lire plus"
+
+#: templates/errors/404.html:6 templates/errors/404.html:10
+#: templates/errors/404.html:17
+msgid "Page not found"
+msgstr ""
+
+#: templates/errors/404.html:20
+msgid "The page you requested does not exist."
+msgstr ""
+
+#: templates/errors/500.html:6 templates/errors/500.html:10
+#: templates/errors/500.html:17
+msgid "Error"
+msgstr ""
+
+#: templates/errors/500.html:20
+msgid "Sorry, an error occurred."
+msgstr ""
+
+#: templates/generic/includes/comment.html:38
+msgid "Link"
+msgstr ""
+
+#: templates/generic/includes/comment.html:41
+#: templates/generic/includes/comment.html:52
+msgid "Reply"
+msgstr ""
+
+#: templates/generic/includes/comment.html:60
+msgid "Comment deleted"
+msgstr ""
+
+#: templates/generic/includes/comment.html:62
+msgid "Comment awaiting approval"
+msgstr ""
+
+#: templates/generic/includes/comment.html:72
+msgid "There are currently no comments"
+msgstr ""
+
+#: templates/generic/includes/comments.html:18
+#, fuzzy
+#| msgid "Comments"
+msgid "Add New Comment"
+msgstr "Commentaires"
+
+#: templates/generic/includes/comments.html:27
+msgid "Comment"
+msgstr ""
+
+#: templates/generic/includes/rating.html:5
+msgid "Current rating"
+msgstr ""
+
+#: templates/generic/includes/rating.html:7
+msgid "Currently unrated"
+msgstr ""
+
+#: templates/generic/includes/rating.html:17
+msgid "Rate"
+msgstr ""
+
+#: templates/includes/language_selector.html:21
+msgid "Change"
+msgstr "Changer"
+
+#: templates/includes/search_form.html:5
+msgid "Enter search term"
+msgstr ""
+
+#: templates/includes/search_form.html:9
+msgid "Search"
+msgstr "Recherche"
+
+#: templates/pages/index.html:4 templates/pages/index.html:5
+#: templates/pages/index.html:8 templates/pages/menus/breadcrumb.html:4
+#: templates/pages/menus/breadcrumb.html:10
+#: templates/pages/menus/dropdown.html:10
+#: unifypage/templates/pages/menus/dropdown.html:10
+msgid "Home"
+msgstr "Accueil"
+
+#: templates/twitter/tweets_lang_dep.html:12
+msgid "Recent Tweets"
+msgstr ""
+
+#: unifypage/elementtypes.py:16
+msgid "Row Dependant"
+msgstr ""
+
+#: unifypage/elementtypes.py:17
+msgid "Image"
+msgstr ""
+
+#: unifypage/elementtypes.py:18
+msgid "Counter"
+msgstr ""
+
+#: unifypage/elementtypes.py:19
+msgid "Vertical Progress Bar"
+msgstr ""
+
+#: unifypage/elementtypes.py:21
+msgid "Box"
+msgstr ""
+
+#: unifypage/elementtypes.py:22
+msgid "Course Block"
+msgstr "Bloc de Cours"
+
+#: unifypage/elementtypes.py:23
+msgid "Form"
+msgstr ""
+
+#: unifypage/elementtypes.py:24
+msgid "Image zoom"
+msgstr ""
+
+#: unifypage/elementtypes.py:25
+msgid "Blog Post Block"
+msgstr ""
+
+#: unifypage/forms.py:27
+#, fuzzy
+#| msgid "Custom Name"
+msgid "First Name"
+msgstr "Nom Personnalisé"
+
+#: unifypage/forms.py:28
+#, fuzzy
+#| msgid "Custom Name"
+msgid "Last Name"
+msgstr "Nom Personnalisé"
+
+#: unifypage/forms.py:29
+msgid "Job title"
+msgstr ""
+
+#: unifypage/forms.py:30
+msgid "Organisation/Company Name"
+msgstr ""
+
+#: unifypage/forms.py:32
+msgid "Email address"
+msgstr ""
+
+#: unifypage/forms.py:33
+#, fuzzy
+#| msgid "Event Pages"
+msgid "Event"
+msgstr "Page d'Événements"
+
+#: unifypage/forms.py:39
+msgid "Phone number"
+msgstr ""
+
+#: unifypage/inputtypes.py:9
+msgid "Text Input"
+msgstr ""
+
+#: unifypage/inputtypes.py:10
+msgid "Text Area"
+msgstr ""
+
+#: unifypage/inputtypes.py:11
+msgid "Email"
+msgstr ""
+
+#: unifypage/inputtypes.py:12
+msgid "Checkbox"
+msgstr ""
+
+#: unifypage/models.py:23
+msgid "Word"
+msgstr ""
+
+#: unifypage/models.py:26
+msgid "Multilang Keyword"
+msgstr ""
+
+#: unifypage/models.py:27
+msgid "Multilang Keywords"
+msgstr ""
+
+#: unifypage/models.py:40
+msgid "Show image"
+msgstr ""
+
+#: unifypage/models.py:41
+msgid "Miniature URL"
+msgstr ""
+
+#: unifypage/models.py:43
+msgid "Preview Text"
+msgstr ""
+
+#: unifypage/models.py:45
+msgid "Introduction text"
+msgstr ""
+
+#: unifypage/models.py:46 unifypage/models.py:115
+msgid "Background"
+msgstr ""
+
+#: unifypage/models.py:48 unifypage/models.py:123
+msgid "Fixed Background"
+msgstr ""
+
+#: unifypage/models.py:49 unifypage/models.py:124
+msgid "Display the Background with a \"fixed\" effect"
+msgstr ""
+
+#: unifypage/models.py:51
+msgid "Include Contact Form"
+msgstr ""
+
+#: unifypage/models.py:58
+msgid "Unify Page"
+msgstr ""
+
+#: unifypage/models.py:59
+msgid "Unify Pages"
+msgstr ""
+
+#: unifypage/models.py:109
+msgid "Name (hidden)"
+msgstr ""
+
+#: unifypage/models.py:110
+msgid "A name to help differenciate the rows when setting order"
+msgstr ""
+
+#: unifypage/models.py:113
+msgid "Introduction"
+msgstr ""
+
+#: unifypage/models.py:116
+msgid ""
+"CSS background property<br/>Can take: url(your_image_url), <br/>A color name "
+"(exemple grey), <br/>rgba(red, green, blue, opacity) with red, green and "
+"blue between 0 and 255 and opacity between 0 and 1,<br/>#hexvalue...<br/>Or "
+"default_image to put the same as the page"
+msgstr ""
+
+#: unifypage/models.py:126
+msgid "Link to more(row)"
+msgstr ""
+
+#: unifypage/models.py:199
+msgid "Row"
+msgstr ""
+
+#: unifypage/models.py:200
+msgid "Rows"
+msgstr ""
+
+#: unifypage/models.py:226
+msgid "Main Content"
+msgstr ""
+
+#: unifypage/models.py:227
+msgid "Icon class"
+msgstr ""
+
+#: unifypage/models.py:228
+msgid ""
+"One of the available icons for <a href=\"https://htmlstream.com/preview/"
+"unify-v1.9.7/shortcode_icon_general.html\">unify</a>, for Font awesome add "
+"fa before (ex:fa  fa-gg)"
+msgstr ""
+
+#: unifypage/models.py:232
+msgid "Icon URL"
+msgstr ""
+
+#: unifypage/models.py:233
+msgid "Size"
+msgstr ""
+
+#: unifypage/models.py:234
+msgid ""
+"Row are separated in 12 columns, this is the numberof columns (0 for "
+"automatic/equal for each elements)<a href=\"http://getbootstrap.com/css/"
+"#grid-example-basic\"> help</a>"
+msgstr ""
+
+#: unifypage/models.py:239
+msgid "Size (~tablet)"
+msgstr ""
+
+#: unifypage/models.py:240
+msgid "Size (~mobile)"
+msgstr ""
+
+#: unifypage/models.py:241
+msgid "Formula"
+msgstr ""
+
+#: unifypage/models.py:242
+msgid "Contains a formula"
+msgstr ""
+
+#: unifypage/models.py:246
+msgid "Link to more(elem)"
+msgstr ""
+
+#: unifypage/models.py:249
+msgid "Link to send"
+msgstr ""
+
+#: unifypage/models.py:250
+msgid "Button Label"
+msgstr ""
+
+#: unifypage/models.py:274
+msgid "Element"
+msgstr ""
+
+#: unifypage/models.py:275
+msgid "Elements"
+msgstr "Elements"
+
+#: unifypage/models.py:456
+msgid "Default Value"
+msgstr ""
+
+#: unifypage/models.py:457
+msgid "Label"
+msgstr ""
+
+#: unifypage/models.py:458
+msgid "Placeholder"
+msgstr ""
+
+#: unifypage/models.py:459
+msgid "Required"
+msgstr ""
+
+#: unifypage/models.py:460
+msgid "Icon Class"
+msgstr ""
+
+#: unifypage/models.py:461
+msgid "Number of rows"
+msgstr ""
+
+#: unifypage/models.py:462
+msgid "Size(1-12)"
+msgstr ""
+
+#: unifypage/models.py:465
+msgid "Input"
+msgstr ""
+
+#: unifypage/models.py:466
+msgid "Inputs"
+msgstr ""
+
+#: unifypage/rowtypes.py:45
+msgid "Default container"
+msgstr ""
+
+#: unifypage/rowtypes.py:46
+msgid "Service Block V4"
+msgstr ""
+
+#: unifypage/rowtypes.py:47
+msgid "Block grid V2"
+msgstr ""
+
+#: unifypage/rowtypes.py:48
+msgid "Parallax Counter V3"
+msgstr ""
+
+#: unifypage/rowtypes.py:49
+msgid "Parallax Counter V4"
+msgstr ""
+
+#: unifypage/rowtypes.py:50
+msgid "Gallery"
+msgstr "Galerie de photos"
+
+#: unifypage/rowtypes.py:51
+msgid "Team V3"
+msgstr ""
+
+#: unifypage/rowtypes.py:52
+msgid "Testimonials V6"
+msgstr ""
+
+#: unifypage/rowtypes.py:53
+msgid "Owl Carousel"
+msgstr ""
+
+#: unifypage/rowtypes.py:54
+msgid "Logo Owl Carousel"
+msgstr ""
+
+#: unifypage/rowtypes.py:55
+msgid "Masonry"
+msgstr ""
+
+#: unifypage/rowtypes.py:56
+msgid "Breadcrumb V3"
+msgstr ""
+
+#: unifypage/rowtypes.py:57
+msgid "Basic Map"
+msgstr ""
+
+#: unifypage/rowtypes.py:58
+msgid "Youtube Video"
+msgstr ""
+
+#: unifypage/templates/pages/unifypage.html:65
+#: unifypage/templates/unifypage/row.html:233
+#: unifypage/templates/unifypage/row.html:247
+msgid "Read More"
+msgstr "Lire Plus"
+
+#: unifypage/templates/unifypage/filterlist.html:17
+msgid "Filters"
+msgstr ""
+
+#: unifypage/templates/unifypage/filterlist.html:52
+msgid "Reset Filters"
+msgstr ""
+
+#: unifypage/templates/unifypage/filterlist.html:57
+msgid "Results per page:"
+msgstr ""
+
+#: unifypage/templates/unifypage/row.html:293
+#: unifypage/templates/unifypage/row.html:308
+#, fuzzy
+#| msgid "Read More"
+msgid "See More"
+msgstr "Lire Plus"
+
+#: unifypage/templates/unifypage/search_results.html:5
+#: unifypage/templates/unifypage/search_results.html:6
+msgid "Search Results"
+msgstr "Résultats de la recherche"
+
+#: unifypage/templates/unifypage/search_results.html:17
+msgid "Sorry, no results"
+msgstr ""
+
+#: unifypage/templates/unifypage/search_results.html:18
+#: unifypage/templates/unifypage/search_results.html:28
+#: unifypage/templates/unifypage/search_results.html:45
+#: unifypage/templates/unifypage/search_results.html:62
+#: unifypage/templates/unifypage/search_results.html:81
+#, python-format
+msgid " related to %(keyword)s"
+msgstr ""
+
+#: unifypage/templates/unifypage/search_results.html:27
+#, fuzzy
+#| msgid "Elements"
+msgid "Events"
+msgstr "Elements"
+
+#: unifypage/templates/unifypage/search_results.html:44
+msgid "Courses"
+msgstr "Formations"
+
+#: unifypage/templates/unifypage/search_results.html:61
+msgid "Blog posts"
+msgstr ""
+
+#: unifypage/templates/unifypage/search_results.html:80
+#, fuzzy
+#| msgid "Event Pages"
+msgid "Pages"
+msgstr "Page d'Événements"
+
+#: unifypage/views.py:279
+msgid "Everything"
+msgstr "Tout"
+
+#~ msgid "Contact"
+#~ msgstr "Contact"
+
+#~ msgid "/en/courses/"
+#~ msgstr "/fr/formations/sujets/"
+
+#~ msgid "/en/courses/online/"
+#~ msgstr "/fr/formations/online/"
+
+#~ msgid "/en/courses/bespoke-training/"
+#~ msgstr "/fr/formations/formation-personnalisee/"
+
+#~ msgid "/en/courses/build/"
+#~ msgstr "fr/formations/customisez"
+
+#~ msgid "Build Your Own Course"
+#~ msgstr "Customisez"
+
+#~ msgid "/en/schedule/archive/"
+#~ msgstr "/fr/agenda/venements-passes/"
+
+#~ msgid "Event Archives"
+#~ msgstr "Événements Passés"
+
+#~ msgid "/en/schedule/testimonials/"
+#~ msgstr "/fr/agenda/temoignages/"
+
+#~ msgid "/en/knowledge/"
+#~ msgstr "/fr/documentation/"
+
+#~ msgid "Resources"
+#~ msgstr "Ressources"
+
+#~ msgid "/en/knowledge/news/"
+#~ msgstr "/fr/documentation/nouveautes/"
+
+#~ msgid "News"
+#~ msgstr "Nouveautés"
+
+#~ msgid "/en/knowledge/glossary/"
+#~ msgstr "/fr/documentation/glossary/"
+
+#~ msgid "Glossary"
+#~ msgstr "Glossaire"
+
+#~ msgid "/en/knowledge/maps-stats/"
+#~ msgstr "/fr/documentation/maps-stats/"
+
+#~ msgid "Maps & Stats"
+#~ msgstr "Cartes & Statistiques"
+
+#~ msgid "/en/knowledge/videos/"
+#~ msgstr "/fr/documentation/videos/"
+
+#~ msgid "Videos"
+#~ msgstr "Videos LNX "
+
+#~ msgid "/en/knowledge/useful-links/"
+#~ msgstr "/fr/documentation/useful-links/"
+
+#~ msgid "Useful Links"
+#~ msgstr "Liens Utiles"
+
+#~ msgid "/en/about/"
+#~ msgstr "/fr/apropos/"
+
+#~ msgid "About"
+#~ msgstr "À propos"
+
+#~ msgid "/en/about/social-media/"
+#~ msgstr "/fr/apropos/social-media/"
+
+#~ msgid "Social Media"
+#~ msgstr "Réseaux sociaux"
+
+#~ msgid "/en/about/gallery/"
+#~ msgstr "/fr/apropos/galerie/"
+
+#~ msgid "Photo Gallery"
+#~ msgstr "Galerie de photos"
+
+#~ msgid "/en/about/clients/"
+#~ msgstr "/fr/apropos/clients/"
+
+#~ msgid "Clients"
+#~ msgstr "Clients"
+
+#~ msgid "/en/contact/"
+#~ msgstr "/fr/contact/"
+
+#~ msgid ""
+#~ "Registered Office: Suite 23, 3rd Floor, 116-118 Finchley Road, London, "
+#~ "Greater London, NW3 5HT, United Kingdom"
+#~ msgstr ""
+#~ "Siège social: 3ème Etage, 116-118 Finchley Road, Londres, NW3 5HT, "
+#~ "Royaume-Uni"
+
+#~ msgid "Go"
+#~ msgstr "Lancer"
+
+#~ msgid "Liquid Nexxus"
+#~ msgstr "Liquid Nexxus"
+
+#~ msgid ""
+#~ "The Global Leader in Payment Systems, Compliance, Risk and Security "
+#~ "Training"
+#~ msgstr "Leader International des Formations SSI et des Supports Monétiques."
+
+#~ msgid " "
+#~ msgstr " "
+
+#~ msgid "LEARN MORE"
+#~ msgstr "En savoir plus"
+
+#~ msgid ""
+#~ "\n"
+#~ "            No results were found in %(search_type)s matching your query: "
+#~ "%(query)s\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "Aucun résultat trouvé dans %(search_type)s correspondant à votre "
+#~ "recherche: %(query)s\n"
+#~ "            "
+
+#~ msgid ""
+#~ "\n"
+#~ "            Showing %(start)s to %(end)s of %(total)s results in "
+#~ "%(search_type)s matching your query: %(query)s\n"
+#~ "            "
+#~ msgstr ""
+#~ "\n"
+#~ "Resultats %(start)s à %(end)s sur %(total)s dans %(search_type)s "
+#~ "correspondant à votre recherche: %(query)s\n"
+#~ "            "
+
+#~ msgid "Maps &amp; Stats"
+#~ msgstr "Cartes Et Statistiques"
+
+#~ msgid "in"
+#~ msgstr "dans"
+
+#~ msgid "Toggle Navigation"
+#~ msgstr "Activer la Navigation"

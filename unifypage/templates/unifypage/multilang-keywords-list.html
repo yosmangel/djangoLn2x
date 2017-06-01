@@ -1,0 +1,21 @@
+<ul class="list-inline tags-v2">
+{% if show_all_multilang_keywords %}
+    {% for multilang_keyword in all_multilang_keywords %}
+    {% if multilang_keyword in multilang_keywords %}
+    <li>
+        {% include 'unifypage/multilang-keyword.html' %}
+    </li>
+    {% else %}
+    <li>
+        {% include 'unifypage/multilang-keyword-light.html' %}
+    </li>
+    {% endif %}
+    {% endfor %}
+{% else %}
+    {% for multilang_keyword in multilang_keywords %}
+    <li>
+        {% include 'unifypage/multilang-keyword.html' %}
+    </li>
+    {% endfor %}
+{% endif %}
+</ul>

@@ -1,0 +1,5 @@
+AddHandler wsgi-script .ws
+RewriteEngine on
+
+Redirect "https://ln2x.com/en/schedule/archive/emv_training_zambia_2012/" "https://ln2x.com/en/events/browse/"
+

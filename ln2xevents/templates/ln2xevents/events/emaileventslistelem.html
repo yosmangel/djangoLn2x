@@ -1,0 +1,15 @@
+{% load mezzanine_tags i18n %}
+{% with entry as event %}
+            <div class="parallaxBg email-event-item" style="background: url({{ event.location_thumb }}) no-repeat 0 0/100% 100%">
+                    <a href="http://ln2x.com/Events/{{ event.slug }}.html">
+                <div>
+                        <strong>
+                            {{ event.course.title }} - {{ event.city }}
+                        </strong>
+                    <div>
+                        {{ event.short_date }}
+                    </div>
+                </div>
+                    </a>
+            </div>
+{% endwith %}

@@ -1,0 +1,49 @@
+{% load mezzanine_tags i18n %}
+{% with entry as event %}
+            <div class="event-item bg-color-light">
+                <a href="{{ event.get_absolute_url }}">
+                    <img src="{{ event.location_thumb }}"/>
+                <h2>
+                    {{ event.course.title }} - {{ event.city }}{% if not event.is_published %} (Draft-Unpublished){% endif %}
+                </h2>
+                </a>
+                <h4>
+                    {{ event.date|title }}
+                </h4>
+                <span>
+                    {% if event.description != '' %}
+                    {{ event.description|richtext_filters|truncatechars_html:350|striptags }}
+                    {% else %}
+                    {{ event.course.description|richtext_filters|truncatechars_html:350|striptags }}
+                    {% endif %}
+                <a href="{{ event.get_absolute_url }}">
+                    {% trans 'More Info' %}
+                </a>
+                </span>
+            </div>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Event",
+  "name": "{{ event.course.title }}",
+  "startDate": "{{ event.start_date }}",
+  "location": {
+    "@type": "Place",
+    "name": "{{ event.venue_name }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{ event.address }}",
+      "addressLocality": "{{ event.city }}",
+      "addressCountry": "{{ event.country }}"
+    }
+  },
+  "description": "{{ event.course.description|richtext_filters|truncatechars_html:350|striptags }}",
+  "endDate": "{{ event.end_date }}",
+  "offers": {
+    "@type": "Offer",
+    "url": "https://ln2x.com{{ event.get_absolute_url }}"
+  },
+
+}
+</script>
+{% endwith %}

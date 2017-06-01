@@ -1,0 +1,17 @@
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags staticfiles el_pagination_tags %}
+
+{% with  blog_posts.object_list as posts %}
+{% lazy_paginate 20 posts %}
+        {% for blog_post in posts %}
+        {% include 'blog/blog_post_list_elem.html' %}
+        {% endfor %}
+{% show_more %}
+{% endwith %}
+
+
+<script>
+{% if request.is_ajax %}
+$('.grid-boxes').append($('.grid-boxes-in.new')).masonry( 'appended', $('.grid-boxes-in.new') );
+{% endif %}
+$('.grid-boxes-in').removeClass('new')
+</script>

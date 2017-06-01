@@ -1,0 +1,243 @@
+{% extends "blog/blog_post_list.html" %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n disqus_tags misc_filters %}
+{% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for blog_post as tags %}
+{% for tag in tags %}{% if not forloop.first %}, {% endif %}{{ tag }}{% endfor %}
+{% endmetablock %}{% endblock %}
+
+{% block meta_description %}{% metablock %}
+{{ blog_post.description }}
+{% endmetablock %}{% endblock %}
+
+{% block title %}
+{{ blog_post.title }}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+<li class="active">{{ blog_post.title }}</li>
+{% endblock %}
+
+{% block intro_title %}{{ blog_post.title }}{% endblock %}
+
+{% block main %}
+<div class="bg-color-light">
+    <div class="container content-sm">
+        <div class="news-v3 bg-color-white margin-bottom-30">
+            {% block blog_post_list_post_featured_image %}
+            {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+            <a href="{{ blog_post.get_absolute_url }}">
+                <img class="img-thumbnail pull-left" src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 90 90 %}">
+            </a>
+            {% endif %}
+            {% if blog_post.image_url != "" %}
+            {% editable post.image_url %}
+            <img class="img-responsive full-width" src="{{ blog_post.image_url }}" alt="">
+            {% endeditable %}
+            {% endif %}
+            {% endblock %}
+            {% block blog_post_detail_content %}
+
+            <div class="news-v3-in">
+                {% block blog_post_detail_postedby %}
+                <ul class="list-inline posted-info">
+                    <li>{% trans "Posted by" %}:
+                        {% with blog_post.user as author %}
+                        <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                        {% endwith %}
+                    </li>
+                    {% if blog_post.city != "" or blog_post.country != "" %}
+                    <li>
+                        {% if blog_post.city != "" %}
+                        {{ blog_post.city }}
+                            {% if blog_post.country != "" %}
+                            ,
+                            {% endif %}
+                        {% endif %}
+                        {% if blog_post.country != "" %}
+                        {{ blog_post.country }}
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                    <li>
+                        {% blocktrans with sometime=blog_post.publish_date %}On {{ sometime }}{% endblocktrans %}
+                    </li>
+                </ul>
+                {% endblock %}
+
+
+                {% editable blog_post.content %}
+                {{ blog_post.content|richtext_filters|safe }}
+                {% endeditable %}
+                {% endblock %}
+
+                {% if blog_post.source %}
+                <div class="post-source">
+                    {% trans 'Source:' %}
+                    <a href="{{ blog_post.source }}">{{ blog_post.source|clean_url }}</a>
+                </div>
+                {% endif %}
+
+                {% if False %}
+                {% with blog_post.categories.all as categories %}
+                {% if categories %}
+                {% editable blog_post.categories %}
+                {% trans 'Tags:' %}
+                {% for category in categories %}
+                <a href="{% url "blog_post_list_category" category.slug %}">#{{ category }}</a> 
+                {% endfor %}
+                {% endeditable %}
+                {% endif %}
+                {% endwith %}
+                {% endif %}
+
+                {% with blog_post.multilang_keywords.all as multilang_keywords %}
+                {% if multilang_keywords %}
+                {% trans 'Tags:' %}
+                {% include 'unifypage/multilang-keywords-list.html' %}
+                {% endif %}
+                {% endwith %}
+
+
+                {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                {% include "generic/includes/disqus_counts.html" %}
+                {% endif %}
+ 
+                {% block blog_post_detail_commentlink %}
+                <p>
+                    {% if blog_post.allow_comments %}
+                        {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+                            (<a href="{{ blog_post.get_absolute_url }}#disqus_thread"
+                                data-disqus-identifier="{% disqus_id_for blog_post %}">{% spaceless %}
+                                {% trans "Comments" %}
+                            {% endspaceless %}</a>)
+                        {% else %}(<a href="#comments">{% spaceless %}
+                            {% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment{% plural %}{{ comments_count }} comments{% endblocktrans %}
+                            {% endspaceless %}</a>)
+                        {% endif %}
+                    {% endif %}
+                </p>
+                {% endblock %}
+
+                {% block blog_post_detail_sharebuttons %}
+                {% set_short_url_for blog_post %}
+                <a class="btn btn-sm share-twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ blog_post.short_url|urlencode }}&amp;text={{ blog_post.title|urlencode }}">{% trans "Share on Twitter" %}</a>
+                <a class="btn btn-sm share-linkedin" target="_blank" href="https://www.linkedin.com/shareArticle?url={{ blog_post.short_url|urlencode }}&amp;mini=true&amp;title={{ blog_post.title|urlencode }}&amp;source=l2nx.com">{% trans "Share on LinkedIn" %}</a>
+                <a class="btn btn-sm share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">{% trans "Share on Facebook" %}</a>
+                {% endblock %}
+            </div>
+        </div>
+
+
+        {% block blog_post_detail_rating %}
+        <div class="panel panel-default rating">
+            <div class="panel-body">
+            {% rating_for blog_post %}
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block blog_post_previous_next %}
+        <ul class="pager">
+        {% with blog_post.get_previous_by_publish_date as previous %}
+        {% if previous %}
+        <li class="previous">
+            <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+        </li>
+        {% endif %}
+        {% endwith %}
+        {% with blog_post.get_next_by_publish_date as next %}
+        {% if next %}
+        <li class="next">
+            <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+        </li>
+        {% endif %}
+        {% endwith %}
+        </ul>
+        {% endblock %}
+
+
+        {% block blog_post_detail_related_posts %}
+        {% if related_posts %}
+        <div class="row news-v2 margin-bottom-50">
+        <h2>{% trans 'Related posts' %}</h2>
+        {% for post in related_posts %}
+            <div class="col-sm-4 sm-margin-bottom-30">
+                <div class="news-v2-badge">
+                    <img class="img-responsive" src="{{ post.image_url }}" alt="">
+                </div>
+                <div class="news-v2-desc">
+                    <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                    <ul class="list-inline posted-info">
+                        <li>{% trans "Posted by" %}:
+                            {% with post.user as author %}
+                            <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>
+                            {% endwith %}
+                        </li>
+                        {% if post.city != "" or post.country != "" %}
+                        <li>
+                            {% if post.city != "" %}
+                            {{ post.city }}
+                                {% if post.country != "" %}
+                                ,
+                                {% endif %}
+                            {% endif %}
+                            {% if post.country != "" %}
+                            {{ post.country }}
+                            {% endif %}
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {{ blog_post.content|richtext_filters|safe|truncatechars:240 }}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+        {% endblock %}
+
+        <hr>
+
+        {% block blog_post_detail_comments %}
+        {% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
+        {% endblock %}
+    </div>
+</div>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ln2x.com{{ blog_post.get_absolute_url }}"
+  },
+  "headline": "{{ blog_post.title }}",
+  "image": {
+    "@type": "ImageObject",
+    "url": "{% if blog_post.image_url and blog_post.image_url != "" %}{{ blog_post.image_url }}{% else %} https://s3.eu-central-1.amazonaws.com/ln2ximages/liquid-nexxus-logo.png{% endif %}",
+    "height": 800,
+    "width": 800
+  },
+  "datePublished": "{{ blog_post.publish_date }}",
+  "dateModified": "{{ blog_post.publish_date }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ blog_post.user.get_full_name|default:blog_post.user.username }}"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "LiquidNexxus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://s3.eu-central-1.amazonaws.com/ln2ximages/liquid-nexxus-logo.png",
+      "width": 600,
+      "height": 60
+    }
+  },
+  "description": "{{ blog_post.description }}"
+}
+</script>
+{% endblock %}

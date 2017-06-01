@@ -1,0 +1,66 @@
+{% extends "ln2xevents/events/eventpage.html" %}
+{% load mezzanine_tags i18n i18next page_contents staticfiles %}
+
+
+{% block main %}
+{% overridelocale lang_code %}
+    {% with content=event.speakers_content speakers=event.speakers_list %}
+    {% if content.content %}
+    {% if content.content.content_type == 'Speakers' or  speakers and content.content.content_type == 'DefaultSpeakersTab' %}
+    <div class="row">
+        <div class="container content">
+            <div class="link-back">
+                <a href="{{ event.get_absolute_url }}#speakers">
+                    <i class="fa fa-arrow-circle-left"></i>
+                    {% trans 'Back to event' %}
+                </a>
+            </div>
+            {% include "ln2xevents/contentrow.html" %}
+            {% if speakers %}
+            <br>
+            <div class="speakers">
+            {% for speaker in speakers %}
+            <div class="panel panel-ln2xblue equal-height-column">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        {{ speaker.public_name }}
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    {% if speaker.custom_profile_image %}
+                        <div class="profile-image photo">
+                            <span class="helper"></span>
+                            <img src="{{ speaker.custom_profile_image }}"/>
+                        </div>
+                    {% endif %}
+                    <div id="bio-{{ speaker.id }}" class="">
+                        <p>
+                            {{ speaker.bio }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            </div>
+            {% endif %}
+            <div class="link-back">
+                <a href="{{ event.get_absolute_url }}#speakers">
+                    <i class="fa fa-arrow-circle-left"></i>
+                    {% trans 'Back to event' %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+    {% endwith %}
+{% endoverridelocale %}
+{% endblock %}
+
+
+
+{% block extra_jquery_init %}
+{% block jMasonry %}
+{{ block.super }}
+{% endblock %}
+{% endblock %}

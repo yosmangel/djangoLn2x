@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <!-- belongs in templates/admin/popup_response.html -->
+    <head><title></title></head>
+    
+    <body>
+        <script type="text/javascript">
+            try{
+                opener.dismissAddAnotherPopup(window, "{{ pk_value }}", "{{ obj }}");
+            } catch(e) {
+                if (e.name === 'ReferenceError') {
+                    close();
+                } else {
+                    throw e;
+                }
+            }
+        </script>
+    </body>
+</html>

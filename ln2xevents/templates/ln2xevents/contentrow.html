@@ -1,0 +1,38 @@
+{% load mezzanine_tags misc_filters page_contents %}
+        <div id="{{ content.content.title|slugify }}" class="headline-center">
+            {% if content.image_64px.url %}
+            <img class="lnx-icon-64px" src="{{ content.image_64px.url }}"/>
+            {% endif %}
+            <h2>
+                {% if content.content.title %}
+                {{ content.content.title|richtext_filters|safe }}
+                {% endif %}
+            </h2>
+            <div>
+                {% if content.content.rich_text %}
+                {{ content.content.rich_text|page_content|richtext_filters|safe }}
+                {% endif %}
+            </div>
+            {% with content.images_128px as imgs %}
+            {% if imgs.count > 0 %}
+            <div class="display_LNXImage_icon128px_Down">
+                {% for img in imgs %}
+                <div>
+                    <img id="LNXImage_128px_Down" src="{{ img.url }}"/>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            {% with content.images_3col as imgs %}
+            {% if imgs.count > 0 %}
+            <div class="display_LNXImage_3col">
+                {% for img in imgs %}
+                <div>
+                    <img id="LNXImage_3col" src="{{ img.url }}"/>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>

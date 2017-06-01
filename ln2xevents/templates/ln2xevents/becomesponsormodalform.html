@@ -1,0 +1,84 @@
+{% load i18n %}
+<button class="btn-u" data-toggle="modal" data-target="#become-sponsor">{% trans 'Become a Sponsor' %}</button>
+<div class="modal fade" id="become-sponsor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel4">{% trans 'Please fill the form if you are interested becoming a sponsor' %}</h4>
+            </div>
+            
+        <form action="/{{ page.slug }}/{% if event %}{{ event.slug }}/{% endif %}" method="post" class="sky-form container full-width">
+            {% csrf_token %}
+            <div class="modal-body">
+                <div class="col-md-6">
+                    {{ form.first_name.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-user"></i>
+                        {{ form.first_name }}
+                    </label>
+                    {{ form.first_name.errors }}
+                </div>
+                <div class="col-md-6">
+                    {{ form.last_name.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-user"></i>
+                    {{ form.last_name }}
+                    </label>
+                    {{ form.last_name.errors }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.company_name.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-briefcase"></i>
+                        {{ form.company_name }}
+                    </label>
+                    {{ form.company_name.errors }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.job_title.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-suitcase"></i>
+                        {{ form.job_title }}
+                    </label>
+                    {{ form.job_title.errors }}
+                </div>
+                <div class="col-md-4">
+                    {{ form.city.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-globe"></i>
+                        {{ form.city }}
+                    </label>
+                    {{ form.city.errors }}
+                </div>
+                <div class="col-md-12">
+                    {{ form.email_address.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-envelope"></i>
+                        {{ form.email_address }}
+                    </label>
+                    {{ form.email_address.errors }}
+                </div>
+                <div class="col-md-12">
+                    {{ form.phone_number.label_tag }}
+                    <label class="input">
+                        <i class="icon-prepend fa fa-phone"></i>
+                        {{ form.phone_number }}
+                    </label>
+                    {{ form.phone_number.errors }}
+                </div>
+                <div class="col-md-12">
+                    {{ form.comments.label_tag }}
+                    <label class="textarea">
+                        <i class="icon-prepend fa fa-comment"></i>
+                        {{ form.comments }}
+                    </label>
+                    {{ form.comments.errors }}
+                </div>
+                <button type="button" class="btn-u btn-u-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn-u">{% trans 'Send' %}</button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>

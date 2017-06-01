@@ -1,0 +1,118 @@
+{% extends base_template %}
+{% load mezzanine_tags i18n i18next tz page_contents staticfiles misc_filters %}
+
+
+{% block main %}
+{% overridelocale lang_code %}
+
+{% if content.content %}
+<div id="agenda" >
+    <div class="container content">
+        <div class="link-back">
+            <a href="{{ editable_obj.get_absolute_url }}#agenda">
+                <i class="fa fa-arrow-circle-left"></i>
+                {% trans 'Back to main page' %}
+            </a>
+        </div>
+        {% include "ln2xevents/contentrow.html" %}
+        {% if event.display_session_times %}
+            {% if confirmed_session_list %}
+            {% with days=event.days_session_list %}
+            <div class="agenda-sessions">
+                {% for session_list in days %}
+                <div class="row">
+                <div class="container">
+                    <h3>
+                        {% with firstDay=session_list|first %}
+                        {{ firstDay.start_time.date|date:"l j F Y" }}
+                        {% endwith %}
+                    </h3>
+                </div>
+                </div>
+                {% for session in session_list %}
+                <div class="{% if session.session_format == 'BREAK' %}bg-color-light{% endif %} row">
+                <div class="container">
+                    <div class="col-sm-1">
+                        <p>
+                            {{ session.start_time|time:"H:i" }}
+                        </p>
+                    </div>
+                    <div class="col-sm-11">
+                        <h3>
+                            {{ session.public_name }}
+                        </h3>
+                        {% if session.abstract %}
+                        <div>
+                            {{ session.abstract|richtext_filters|safe }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+            {% endwith %}
+            {% endif %}
+        {% else %}
+        {% if confirmed_session_list %}
+        <div class="agenda-sessions row">
+            <div class="grid-boxes">
+                <div class="gutter-sizer"></div>
+                {% for session in confirmed_session_list %}
+                {% if session.session_format != 'BREAK' %}
+                <div class="grid-boxes-in grid-item tag-box tag-box-v1 box-shadow shadow-effect-2">
+                    <h3>
+                        {{ session.public_name }}
+                    </h3>
+                    {% if session.abstract %}
+                    <div>
+                        {{ session.abstract|richtext_filters|safe }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if course_session_list %}
+        <div class="agenda-sessions row">
+            <div class="grid-boxes">
+                <div class="gutter-sizer"></div>
+                {% for session in course_session_list %}
+                {% if session.session_format != 'BREAK' %}
+                <div class="grid-boxes-in grid-item tag-box tag-box-v1 box-shadow shadow-effect-2">
+                    <h3>
+                        {{ session.public_name }}
+                    </h3>
+                    {% if session.abstract %}
+                    <div>
+                        {{ session.abstract|richtext_filters|safe }}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+        <div class="link-back">
+            <a href="{{ editable_obj.get_absolute_url }}#agenda">
+                <i class="fa fa-arrow-circle-left"></i>
+                {% trans 'Back to main page' %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endoverridelocale %}
+{% endblock %}
+
+{% block extra_jquery_init %}
+{% block jMasonry %}
+{{ block.super }}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load page_contents mezzanine_tags i18n %}
+<div class="bg-color-light">
+    <div class="container row-reveal content">
+        <div class="testimonials-v6 testimonials-wrap">
+            <div class="owl-carousel owl-theme testimonials">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% testimonials_blocks 'range20' LANGUAGE_CODE as testis %}
+                {{ testis|richtext_filters|safe }}
+            </div>
+        </div>
+    </div>
+</div>

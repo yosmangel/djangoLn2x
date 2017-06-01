@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block meta_title %}
+{% trans "Page not found" %}
+{% endblock %}
+
+{% block title %}
+{% trans "Page not found" %}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="panel panel-u">
+        <div class="panel-heading">
+            <h3 class="panel-title">{% trans "Page not found" %}</h3>
+        </div>
+        <div class="panel-body">
+            {% trans "The page you requested does not exist." %}
+        </div>
+    </div>
+</div>
+{% endblock %}

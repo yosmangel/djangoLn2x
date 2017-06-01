@@ -1,0 +1,17 @@
+{% load mezzanine_tags i18n %}
+{% with entry as event %}
+        <div class="col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-0">
+            <div class=" parallaxBg thumb-item" style="background: url({{ event.location_thumb }}) no-repeat 0 0/100% 100%">
+                    <a href="{{ event.get_absolute_url }}">
+                <div>
+                        <strong>
+                            {{ event.course.title }} - {{ event.city }}{% if not event.is_published %} (Draft-Unpublished){% endif %}
+                        </strong>
+                    <div>
+                        {{ event.short_date }}
+                    </div>
+                </div>
+                    </a>
+            </div>
+        </div>
+{% endwith %}

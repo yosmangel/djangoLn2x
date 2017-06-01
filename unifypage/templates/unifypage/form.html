@@ -1,0 +1,47 @@
+{% load mezzanine_tags i18n %}
+
+<form class="sky-form container full-width" action="{% if element.action|slice:":1" == "/" %}/{{ LANGUAGE_CODE }}{% endif %}{{ element.action }}" method="post">
+    {% csrf_token %}
+    {% if element.action|slice:":1" == "/" %}{% csrf_token %}{% endif %}
+    {% if element.icon != '' %}
+    <div class="col-md-12">
+    {{ element.icon|richtext_filters|safe }}
+    </div>
+    {% endif %}
+    {% if element.title != '' %}
+    <div class="col-md-12">
+    <h3>{{ element.title }}</h3>
+    </div>
+    {% endif %}
+    {% if element.pfcontent != '' %}
+    <div class="col-md-12">
+    {{ element.pfcontent|richtext_filters|safe }}
+    </div>
+    {% endif %}
+
+    {% with inputs=element.inputs.all %}
+    {% for input in inputs %}
+    <div class="col-md-{{ input.size }} col-sm-12">
+        {% if input.label != "" and input.get_type != 'checkbox' %}
+        <label class="label">{{ input.label }}</label>
+        {% endif %}
+        <label class="{{ input.label_type }}{% if input.label_type == 'textarea' %} textarea-resizable{% endif %}">
+            {% if input.icon_class != "" %}
+            <i class="icon-prepend {{ input.icon_class }}"></i>
+            {% endif %}
+            <{% if input.label_type == 'textarea' %}textarea{% else %}input type="{{ input.get_type }}"{% if input.value != '' %} value="{{ input.value }}"{% endif %}{% endif %} name='{{ input.name }}'{% if input.placeholder != '' %} placeholder="{{ input.placeholder }}"{% endif %}{% if input.rows != Null %} rows="{{ input.rows }}"{% endif %}{% if input.required %} required{% endif %}>{% if input.label_type == 'textarea' %}{% if input.value != '' %}{{ input.value }}"{% endif %}</textarea>{% endif %}
+            {% if input.get_type == 'checkbox' %}
+            <i></i>
+            {% if input.label != "" %}
+            {{ input.label }}
+            {% endif %}
+            {% endif %}
+        </label>
+    </div>
+    {% endfor %}
+    {% endwith %}
+    <div class="col-md-12">
+        <button type="submit" class="btn-u">{% if element.button_label != '' %}{{ element.button_label }}{% else %}Send{% endif %}</button>
+    </div>
+    </form>
+

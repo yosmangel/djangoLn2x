@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load i18n mezzanine_tags %}
+
+{% block meta_title %}{% trans "Search Results" %}{% endblock %}
+{% block intro_title %}{% block title %}{% trans "Search Results" %}{% endblock %}{% endblock %}
+{% block extra_head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+
+
+{% block main %}
+{% if no_result %}
+<div class="breadcrumbs">
+    <div class="container">
+        <h2 class="pull-left">
+            {% trans 'Sorry, no results' %}
+            {% blocktrans %} related to {{ keyword }}{% endblocktrans %}
+        </h2>
+    </div>
+</div>
+{% else %}
+{% if event_pages %}
+<div class="breadcrumbs">
+    <div class="container">
+        <h2 class="pull-left">
+            {% trans 'Events' %}
+            {% blocktrans %} related to {{ keyword }}{% endblocktrans %}
+        </h2>
+    </div>
+</div>
+<div class="container">
+    <div id="search-results">
+        {% for entry in event_pages %}
+        {% include 'ln2xevents/events/eventslistelem.html' %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% if course_pages %}
+<div class="breadcrumbs">
+    <div class="container">
+        <h2 class="pull-left">
+            {% trans 'Courses' %}
+            {% blocktrans %} related to {{ keyword }}{% endblocktrans %}
+        </h2>
+    </div>
+</div>
+<div class="container">
+    <div id="search-results">
+        {% for entry in course_pages %}
+        {% include 'ln2xevents/courseslistelem.html' %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% if blog_posts %}
+<div class="breadcrumbs">
+    <div class="container">
+        <h2 class="pull-left">
+            {% trans 'Blog posts' %}
+            {% blocktrans %} related to {{ keyword }}{% endblocktrans %}
+        </h2>
+    </div>
+</div>
+<div class="container">
+    <div id="search-results">
+        {% for blog_post in blog_posts %}
+        <div class="col-md-6 bg-light">
+            {% include 'blog/blog_post_list_elem.html' %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% if pages %}
+<div class="breadcrumbs">
+    <div class="container">
+        <h2 class="pull-left">
+            {% trans 'Pages' %}
+            {% blocktrans %} related to {{ keyword }}{% endblocktrans %}
+        </h2>
+    </div>
+</div>
+<div class="container">
+    <div id="search-results">
+        {% for page in pages %}
+        <div class="col-md-6">
+            <a href="{{ page.get_absolute_url }}">{{ page }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% endblock %}

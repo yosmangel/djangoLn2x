@@ -1,0 +1,19 @@
+{% load mezzanine_tags i18n %}
+{% with entry as course %}
+            <div class="course-item event-item bg-color-light">
+                {% if course.thumb %}
+                <img src="{{ course.thumb }}"/>
+                {% endif %}
+                <a href="{{ course.get_absolute_url }}">
+                    <h2>
+                        {{ course.title }}{% if not course.is_published %} (Draft-Unpublished){% endif %}
+                    </h2>
+                </a>
+                <span>
+                    {{ course.description|richtext_filters|truncatechars_html:350|striptags }}
+                <a href="{{ course.get_absolute_url }}">
+                    {% trans 'More Info' %}
+                </a>
+                </span>
+            </div>
+{% endwith %}

@@ -1,0 +1,118 @@
+{% extends "pages/unifypage.html" %}
+{% load i18n mezzanine_tags blog_tags keyword_tags disqus_tags staticfiles el_pagination_tags %}
+
+
+{% block meta_keywords %}{% metablock %}
+{% keywords_for page as keywords %}
+{% for keyword in keywords %}
+    {% if not forloop.first %}, {% endif %}
+    {{ keyword }}
+{% endfor %}
+{% endmetablock %}{% endblock %}
+
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "ln2xsite/css/pages/blog_masonry_3col.css" %}">
+{% endblock %}
+
+{% block body_classes %}
+{% endblock %}
+
+{% block breadcrumb_menu %}
+{{ block.super }}
+{% if tag or category or year or month or author %}
+<li>{% spaceless %}
+{% if tag %}
+    {% trans "Tag:" %} {{ tag }}
+{% else %}{% if category %}
+    {% trans "Category:" %} {{ category }}
+{% else %}{% if year or month %}
+    {% if month %}{{ month }}, {% endif %}{{ year }}
+{% else %}{% if author %}
+    {% trans "Author:" %} {{ author.get_full_name|default:author.username }}
+{% endif %}{% endif %}{% endif %}{% endif %}
+{% endspaceless %}
+</li>
+{% endif %}
+{% endblock %}
+
+
+{% block first_row %}
+{% if tag or category or year or month or author %}
+    {% block blog_post_list_filterinfo %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2 class="pull-left">
+            {% if tag %}
+                {% trans "Viewing posts tagged" %} {{ tag }}
+            {% else %}{% if category %}
+                {% trans "Viewing posts for category" %} {{ category }}
+            {% else %}{% if year or month %}
+                {% trans "Viewing posts from" %} {% if month %}{{ month }}, {% endif %}
+                {{ year }}
+            {% else %}{% if author %}
+                {% trans "Viewing posts by" %}
+                {{ author.get_full_name|default:author.username }}
+            {% endif %}{% endif %}{% endif %}{% endif %}
+            </h2>
+        </div>
+    </div>
+    {% endblock %}
+{% else %}
+    {% if page %}
+    {% block blog_post_list_pagecontent %}
+    {% if page.get_content_model.content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <h2 class="pull-left">
+                {{ page.get_content_model.content|richtext_filters|safe }}
+            </h2>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+    {% endif %}
+{% endif %}
+<div class="bg-color-light">
+    <div class="container">
+        <div class="blog_masonry_3col{% if not request.user_agent.is_mobile %} desktop{% endif %}">
+            <div class="content grid-boxes ">
+                {% include masonry_page_template %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% if settings.COMMENTS_DISQUS_SHORTNAME %}
+{% include "generic/includes/disqus_counts.html" %}
+{% endif %}
+
+{% endblock %}
+
+{% block right_panel %}
+{% include "blog/includes/filter_panel.html" %}
+{% endblock %}
+
+
+{% block extra_js %}
+    {{ block.super }}
+    <script type="text/javascript"src="{% static "ln2xsite/plugins/masonry/masonry4.1.1.pkgd.min.js" %}"></script>
+    <script type="text/javascript"src="{% static "el-pagination/js/el-pagination.js" %}"></script>
+{% endblock %}
+
+{% block js_init %}
+    {{ block.super }}
+    $.endlessPaginate({
+    {% if not request.user_agent.is_mobile %}
+        paginateOnScroll: true,
+        paginateOnScrollMargin: 20 + $('div.footer').height() + $('div.copyright').height() + 50,
+        paginateOnScrollChunkSize: 10,
+     });
+     $('.grid-boxes').masonry({
+            itemSelector: '.grid-boxes-in',
+     {% endif %}
+       });
+{% endblock %}
+    

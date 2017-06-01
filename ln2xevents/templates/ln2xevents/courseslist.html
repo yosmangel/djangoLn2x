@@ -1,0 +1,58 @@
+{% extends "unifypage/filterlist.html" %}
+{% load i18n staticfiles crispy_forms_tags %}
+
+{% block filter_title %}
+{{ block.super }}
+{% endblock %}
+
+{% block left_inputs %}
+    <div>
+        {{ filter.form.lang_code.label_tag }}
+        {{ filter.form.lang_code.errors }}
+        {% for checkbox in filter.form.lang_code %}
+            <label class="toggle">
+                {{ checkbox.tag }} <i></i> {{ checkbox.choice_label }}
+            </label>
+        {% endfor %}
+    </div>
+    <hr />
+    <div>
+        {{ filter.form.level.label_tag }}
+        {{ filter.form.level.errors }}
+        {% for checkbox in filter.form.level %}
+            <label class="toggle">
+                {{ checkbox.tag }} <i></i> {{ checkbox.choice_label }}
+            </label>
+        {% endfor %}
+    </div>
+    <hr />
+    <div>
+        {{ filter.form.delivery_method.label_tag }}
+        {{ filter.form.delivery_method.errors }}
+        {% for checkbox in filter.form.delivery_method %}
+            <label class="toggle">
+                {{ checkbox.tag }} <i></i> {{ checkbox.choice_label }}
+            </label>
+        {% endfor %}
+    </div>
+    <hr />
+    <div>
+        {{ filter.form.keywords.label_tag }}
+        {{ filter.form.keywords.errors }}
+        {% for checkbox in filter.form.keywords %}
+            <label class="checkbox">
+                {{ checkbox.tag }} <i></i> {{ checkbox.choice_label }}
+            </label>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block top_inputs %}
+{{ block.super }}
+{% endblock %}
+
+
+{% block init_order %}"title"{% endblock %}
+
+

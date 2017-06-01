@@ -1,0 +1,107 @@
+{% extends "pages/unifypage.html" %}
+{% load i18n staticfiles crispy_forms_tags %}
+
+
+{% block first_row %}
+<div class="row">
+<div class="container">
+    <form method="get" id="filter" class="sky-form">
+        {% csrf_token %}
+        <div class="col-md-3 col-sm-12">
+            <div class="panel-group">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <button id="filter-title" data-toggle="collapse" data-target="#filters" type="button" class="select">
+                            <h2 class="panel-title">
+                            {% block filter_title %}
+                                {% trans 'Filters' %}
+                            {% endblock %}
+                            </h2>
+                            <i></i>
+                        </button>
+                    </div>
+                    <div id="filters" class="panel-collapse collapse{% if not request.user_agent.is_mobile %} in{% endif %}">
+                        <div class="panel-body">
+                            {% block left_inputs %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-12">
+            <div class="row">
+                {% block top_inputs %}
+                <div class="fieldWrapper col-sm-5">
+                    {{ filter.form.o.errors }}
+                    <div class="col-md-5 col-sm-4">
+                        {{ filter.form.o.label_tag }}
+                    </div>
+                    <div class="col-md-7 col-sm-8 col-xs-8">
+                    <label class="select">
+                         <select name="o" class="i-can-add-my-own-attrs-now" id="id_o">
+                            {% for id, name in filter.form.o.field.choices %}
+                            <option value="{{ id }}">{{ name }}</option>
+                            {% endfor %}
+                        </select>
+                        <i></i>
+                    </label>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-4"> 
+                    <button class="btn btn-u" type="reset" value="reset">{% trans 'Reset Filters' %}</button>
+                </div>
+                <div class="fieldWrapper col-sm-4"> 
+                    <div class="col-md-6 col-sm-7 col-xs-12">
+                        <label for="id_elem_number" class="control-label">
+                            {% trans 'Results per page:' %}
+                        </label> 
+                    </div>
+                    <div class="col-md-6 col-sm-5 col-xs-10"> 
+                        <label class="select">
+                            <select class="select" id="id_elem_number" name="elem_number">
+                                {% for nb in nb_entry_values %}
+                                <option value="{{ nb }}" {% if nb == 10 %}selected="selected"{% endif %}>{{ nb }}</option>
+                                {% endfor %}
+                            </select> 
+                            <i></i>
+                        </label>
+                    </div> 
+                </div>
+                <div class="fieldWrapper col-sm-1 col-xs-2"> 
+                    <label class="toggle">
+                        <input id="id_thumb_view" name="thumb_view" value="True" type="checkbox">
+                        <i class="thumbnails-switch"></i>
+                    </label>
+                </div>
+                {% endblock %}
+            </div>
+        </div>
+    </form>
+    <div class="col-md-3 col-sm-12">
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <div id="filter-result" class="endless_page_template">
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block footer_js %}
+{{ block.super }}
+{% block page_js %}
+<script type="text/javascript"src="{% static "ln2xsite/js/pages/event_browse.js" %}"></script>
+<script>
+{% endblock %}
+$('#filter-result').endlessPaginate();
+$("#filter input[value='{{ LANGUAGE_CODE }}']").prop('checked', true);
+
+$("#filter select#id_o").val({% block init_order %}{% endblock %});
+$("#filter").submit();
+</script>
+{% endblock %}
+
+{% block js_init %}
+{{ block.super }}
+{% endblock %}

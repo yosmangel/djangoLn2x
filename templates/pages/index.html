@@ -1,0 +1,15 @@
+{% extends "pages/unifypage.html" %}
+{% load staticfiles i18n pages_tags mezzanine_tags %}
+
+{% block meta_title %}{% trans "Home" %}{% endblock %}
+{% block title %}{% trans "Home" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block videoBackground %}
+{% endblock %}
+{% block extra_js %}
+{{ block.super }}
+{% endblock %}

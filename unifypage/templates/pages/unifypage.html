@@ -1,0 +1,108 @@
+{% extends "pages/page.html" %}
+
+{% load mezzanine_tags i18n staticfiles el_pagination_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "ln2xsite/plugins/owl-carousel2/assets/owl.carousel.min.css" %}">
+<link rel="stylesheet" href="{% static "ln2xsite/plugins/owl-carousel2/assets/owl.theme.ln2x.css" %}">
+<link rel="stylesheet" href="{% static "ln2xsite/css/pages/portfolio-v1.css" %}">
+<link rel="stylesheet" href="{% static "ln2xsite/css/pages/blog_masonry_3col.css" %}">
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+    <script type="text/javascript" src="{% static "el-pagination/js/el-pagination.js" %}"></script>
+    <script type="text/javascript"src="{% static "ln2xsite/plugins/masonry/masonry4.1.1.pkgd.min.js" %}"></script>
+{% endblock %}
+
+{% block body_classes %}
+{{ block.super }}
+{% endblock %}
+
+{% block intro_style %}{% if page.unifypage.background %} background: {% if page.unifypage.is_background_fixed %}fixed {% endif %}{{ page.unifypage.background }};{% endif %}{% endblock %}
+
+{% block intro_text %}{% editable page.unifypage.intro %}{% if page.unifypage.intro != '' %}<h4>{{ page.unifypage.intro|richtext_filters|safe }}</h4>{% endif %}{% endeditable %}{% endblock %}
+
+{% block main %}
+
+{% block first_row %}{% endblock %}
+
+{% block rows %}
+<div id="rows">
+{% include 'unifypage/row.html' %}
+</div>
+{% endblock %}
+
+{% if page.unifypage.include_contact_form %}
+<div class="row">
+    <div class="container row-reveal">
+        <form action="/{{ page.slug }}/" method="post" class="sky-form container full-width">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+{% endif %}
+
+{% block section_pages %}
+<div class="parallaxBg" style="{% if page.unifypage.background %} background: {% if page.unifypage.is_background_fixed %}fixed {% endif %}{{ page.unifypage.background }};{% endif %}">
+    <div class="container row-reveal padding-sm">
+        {% for section_page in page.unifypage.section_pages %}
+        {% if section_page.is_public or is_user_admin %}
+        <div class="col-md-4 col-sm-6 col-sm-offset-0 col-xs-12 col-xs-offset-0 md-margin-bottom-10">
+            <div class="view view-tenth">
+                <img class="img-responsive" src="{% if section_page.miniature_url %}{{ section_page.miniature_url }}{% else %}https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/default_miniature.png{% endif %}" alt="" />
+                <div class="mask">
+                    <h2>{{ section_page.title }}</h2>
+                    <p>
+                    {% if section_page.preview_text %}
+                    {{ section_page.preview_text }}
+                    {% else %}
+                    {{ section_page.intro|richtext_filters|safe|truncatechars_html:100 }}
+                    {% endif %}
+                    </p> 
+                    <a href="{{ section_page.get_absolute_url }}" class="info">{% trans 'Read More' %}</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block last_row %}{% endblock %}
+{% endblock %}
+
+{% block footer_js %}
+    <script type="text/javascript" src="{% static "ln2xsite/plugins/jquery-appear.js" %}"></script>
+    <script type="text/javascript" src="{% static "ln2xsite/plugins/counter/waypoints.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "ln2xsite/plugins/counter/jquery.counterup.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "ln2xsite/plugins/owl-carousel2/owl.carousel.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "ln2xsite/js/plugins/progress-bar.js" %}"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="{% static "ln2xsite/plugins/gmap/gmap.js" %}"></script>
+    {{ block.super }}
+    {% if not is_user_admin and not request.user_agent.is_mobile%}
+    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
+    {% endif %}
+{% endblock %}
+{% block js_init %}
+{{ block.super }}
+    {% if not request.user_agent.is_mobile %}
+     $('.grid-boxes').masonry({
+            itemSelector: '.grid-boxes-in',
+       });
+    {% endif %}
+{% endblock %}
+{% block extra_jquery_init %}
+    {% if not is_user_admin and not request.user_agent.is_mobile %}
+    window.sr = ScrollReveal({ 
+        reset: false,
+        rotate: { x: 0, y: 90, z: 0 },
+        viewOffset: { top: 70, right: 0, bottom: 0, left: 0 },
+    });
+    sr.reveal('.row-reveal');
+    {% endif %}
+{% endblock %}

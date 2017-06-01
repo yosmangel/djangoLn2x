@@ -1,0 +1,510 @@
+{% extends "pages/unifypage.html" %}
+{% load mezzanine_tags i18n page_contents staticfiles misc_filters %}
+
+{% block body_classes %}{% endblock %}
+
+{% block intro_style %}background: url({{ event.course.image_breakers_list_cycle|next_ib }}) repeat fixed;{% endblock %}
+
+{% block meta_title %}{{ event.title }}{% endblock %}
+{% block title %}{{ event.course.title }} - {{ event.city }}{% endblock %}
+{% block intro_title %}{{ event.course.title }}{% endblock %}
+{% block intro_text %}<p class="dark">{{ event.date }} - {{ event.city }}{% if event.city and event.country %}, {% endif %}{{ event.country }}</p>{% endblock %}
+
+{% block sub_menu %}
+<ul class="nav navbar-nav sub-menu">
+{% for content in general_contents %}
+    <li>
+        <a href="#{{ content.content.title|slugify }}">{{ content.content.title }}</a>
+    </li>
+{% endfor %}
+{% for key, content in specific_contents.items %}
+    <li>
+        <a href="#{{ content.content.title|slugify }}">{{ content.content.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+{% endblock %}
+{% block main %}
+<div class="event">
+    <div class="parallaxBg" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/>
+        <div class="dark">
+            <div class="container row-reveal backgrounded-intro">
+                {% if event.description != '' %}
+                {{ event.description|richtext_filters|safe }}
+                {% else %}
+                {{ event.course.description|richtext_filters|safe }}
+                {% endif %}
+            </div>
+            <div class="parallax-counter">
+                <div class="container row-reveal">
+                    {% if event.is_past %}
+                        <div class="bg-color-light tag-box box-shadow shadow-effect-1">
+                            {% in_past_message %}
+                        </div>
+                    {% else %}
+                    <!-- counters -->
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6">
+                            <div class="counters">
+                                <h4>{% trans 'Days Remaining' %}</h4>
+                                <span class="counter">{{ event.remaining_days }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xs-6 md-margin-bottom-50">
+                        {% if event.still_earlybird %}
+                            <div class="counters">
+                                <h4>{% trans 'Days left for early bird' %}</h4>
+                                <span class="counter">{{ event.early_bird_days }}</span>
+                            </div>
+                        {% else %}
+                            <div class="text-center">
+                                <div class="col-sm-12">
+                                    <h4>{% trans 'seat(s) occupied' %}</h4>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <div class="progress progress-u progress-striped active ">
+                                        <div class="progress-bar progress-bar-u" role="progressbar" data-width="{{ event.seats_occupied }}">
+                                    {% if event.seats_occupied < 50 %}
+                                        </div>
+                                        <span>{{ event.seats_occupied }}%</span>
+                                    {% else %}
+                                        <span>{{ event.seats_occupied }}%</span>
+                                        </div>
+                                    {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <div class="counters">
+                                <h4>{% trans 'seat(s) left' %}</h4>
+                                <span class="counter">{{ event.seats_left }}</span>
+                            </div>
+                        </div>
+                    </div><!-- end counters -->
+                    {% endif %}
+                </div>
+            </div>
+            <div class="container content">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        {% if sponsors_types %}
+                        <span>{% trans 'Sponsors' %}</span>
+                        <div class="owl-carousel owl-theme 3-col-carousel">
+                                {% for sponsors in sponsors_types %}
+                                {% for sponsor in sponsors %}
+                                <div class="item">
+                                    {{ sponsor.label.singular|safe }}
+                                    <div class="profile-image">
+                                        <span class="helper"></span>
+                                        <img src="{{ sponsor.public_logo }}" alt="{{ sponsor.public_name }}"/>
+                                    </div>
+                                    <h3>
+                                        {{ sponsor.public_name }}
+                                    </h3>
+                                </div>
+                                {% endfor %}
+                                {% endfor %}
+                        </div>
+                        {% else %}
+                        <span>{% trans 'Testimonials' %}</span>
+                        <div class="owl-carousel owl-theme testimonials-v6 testimonials-wrap 3-col-carousel">
+                            {% testimonials_block 'range10' event.lang_code event.course as testis %}
+                            {{ testis|richtext_filters|safe }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                    {% if session_list %}
+                        <span>{% trans 'Sessions' %}</span>
+                        <div class="owl-carousel owl-theme 3-col-carousel">
+                        {% for session in session_list %}
+                            {% if session.session_format != 'BREAK' %}
+                            <div class="item shadow-wrapper">
+                                <div class="confirmed tag-box tag-box-v2 box-shadow shadow-effect-4">
+                                    <h4 class="primary-color">
+                                        {{ session.public_name }}
+                                    </h4>
+                                    {% if session.abstract %}
+                                    <p>
+                                        {{ session.abstract|striptags|truncatechars:150 }}
+                                    </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                    </div>
+                    <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-12">
+                        {% if speakers %}
+                        <span>{% trans 'Speakers' %}</span>
+                        <div class="owl-carousel owl-theme 3-col-carousel">
+                                {% for speaker in speakers %}
+                                        <div class="item profile-image photo">
+                                            <span class="helper"></span>
+                                            <img src="{{ speaker.custom_profile_image|default_if_none:"https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/avatar_empty.png" }}"/>
+                                        </div>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for content in general_contents %}
+    <div class="row">
+        <div class="container row-reveal content">
+        {% include "ln2xevents/contentrow.html" %}
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% endfor %}
+
+    {% with content=who_attends_content %}
+    {% if content.content %}
+    <div class="row">
+        <div class="container row-reveal content">
+        {% include "ln2xevents/contentrow.html" %}
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="bg-color-light">
+        <div class="container row-reveal content">
+            <div class="testimonials-v6 testimonials-wrap">
+                {% with content=testimonials_content %}
+                    {% if content %}
+                    {% include "ln2xevents/contentrow.html" %}
+                    {% endif %}
+                {% endwith %}
+
+                <div class="owl-carousel owl-theme testimonials">
+                    {% testimonials_block 'range10' event.lang_code event.course as testis %}
+            {{ testis|richtext_filters|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+
+
+    {% with content=agenda_content %}
+    {% if content.content %}
+    <div id="agenda" class="row">
+        <div class="container row-reveal content">
+            {% include "ln2xevents/contentrow.html" %}
+            {% if session_list %}
+            <h2>{% trans 'Sessions' %}</h2>
+            <div class="owl-carousel owl-theme agenda-sessions">
+            {% for session in session_list %}
+                {% if session.session_format != 'BREAK' %}
+                <div class="item shadow-wrapper">
+                    <div class="confirmed tag-box tag-box-v2 box-shadow shadow-effect-4">
+                        <h4>
+                            {{ session.public_name }}
+                        </h4>
+                        {% if session.abstract %}
+                        <p>
+                            {{ session.abstract|striptags|truncatechars:150 }}
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+            <a href="agenda" class="btn btn-u">{% trans 'View complete agenda and details' %}</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% endif %}
+    {% endwith %}
+    
+
+    {% with content=trainers_content %}
+    {% if content.content %}
+    <div class="row">
+        <div class="container row-reveal content">
+        {% include "ln2xevents/contentrow.html" %}
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% endif %}
+    {% endwith %}
+
+    {% if sponsors_types %}
+    {% with content=sponsors_content %}
+    {% if content.content %}
+    <div id="sponsors" class="row">
+        <div class="container content">
+            {% include "ln2xevents/contentrow.html" %}
+            {% with sponsors_first=sponsors_types|first %}
+            {% if sponsors_types|length > 1 or sponsors_first|length > 1 %}
+            <div class="owl-carousel owl-theme sponsors">
+            {% for sponsors in sponsors_types %}
+            {% for sponsor in sponsors %}
+                <div class="item">
+                    {{ sponsor.label.singular|safe }}
+                    <div class="profile-image">
+                        <span class="helper"></span>
+                        <img src="{{ sponsor.public_logo }}" alt="{{ sponsor.public_name }}"/>
+                    </div>
+                    <h3>
+                        {{ sponsor.public_name }}
+                    </h3>
+                </div>
+            {% endfor %}
+            {% endfor %}
+            </div>
+            <a href="sponsors" class="btn btn-u">{% trans 'View full list' %}</a>
+            {% else %}
+            {% for sponsors in sponsors_types %}
+            {% for sponsor in sponsors %}
+            <div class="container">
+                <div class="row">
+                    {{ sponsor.label.singular|safe }}
+                </div>
+                <div class="row">
+                    <img class="logo-sponsor" src="{{ sponsor.public_logo }}" alt="{{ sponsor.public_name }}"/>
+                </div>
+                <div class="row">
+                    <h3>
+                        {{ sponsor.public_name }}
+                    </h3>
+                    <div>
+                        {{ sponsor.public_description }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% endif %}
+    {% endwith %}
+    {% endif %}
+
+    {% with content=speakers_content %}
+    {% if content.content %}
+    {% if content.content.reference != 'DefaultSpeakersTab' or speakers and content.content.reference == 'DefaultSpeakersTab' %}
+    <div id="speakers" class="row">
+        <div class="container content">
+            {% include "ln2xevents/contentrow.html" %}
+            {% if speakers %}
+            <div class="owl-carousel owl-theme speakers">
+            {% for speaker in speakers %}
+                <div class="item">
+                    <div class="profile-image photo">
+                        <span class="helper"></span>
+                        <img src="{{ speaker.custom_profile_image|default_if_none:"https://s3.eu-central-1.amazonaws.com/ln2ximages/Icons/avatar_empty.png" }}"/>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <a href="speakers" class="btn btn-u">{% trans 'View full list' %}</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% endif %}
+    {% endif %}
+    {% endwith %}
+
+
+
+    <div class="row">
+        <div class="container row-reveal content">
+        {% if event.venue_name == '' %}
+        {% with content=event.venue_content %}
+            {% if content %}
+            {% include "ln2xevents/contentrow.html" %}
+            {% endif %}
+        {% endwith %}
+        {% else %}
+            <div class="headline-center">
+                <h2>{% trans 'Venue' %}</h2>
+                {% if event.venue_name != '' and event.venue_name != 'TBD' and event.venue_name != 'TBA' %}
+                <h4>{{ event.venue_name }}</h4>
+                {% endif %}
+                <p>
+                {% if event.venue_address and event.venue_address != '' %}
+                {{ event.venue_address }}<br/><br/>
+                {% endif %}
+                {{ event.venue_description|richtext_filters|safe }}
+                </p>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    <div id="map" class="map"></div>
+
+    {% if not event.is_past %}
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    <div class="row-reveal">
+        <div class="headline-center">
+            <h2>{% trans 'Enquiries' %}</h2>
+        </div>
+        {% include "unifypage/contactform.html" %}
+        {% endif %}
+    </div>
+
+    <div class="parallaxBg separator" style="background: url({{ imgbreaks|next_ib }}) fixed repeat"/></div>
+    {% with content=next_sessions_content %}
+    <div class="row">
+        <div class="container row-reveal content">
+            {% if next_sessions %}
+            {% include "ln2xevents/contentrow.html" %}
+            <div class="owl-carousel owl-theme next-sessions">
+                {% for event in next_sessions %}
+                {% include 'ln2xevents/eventslistelem.html' %}
+                {% endfor %}
+            </div>
+            {% else %}
+            {% with content=event.no_next_sessions_content %}
+            {% include "ln2xevents/contentrow.html" %}
+            {% endwith %}
+            {% endif %}
+        </div>
+    </div>
+    {% endwith %}
+
+</div>
+
+{% endblock %}
+
+{% block footer_js %}
+{{ block.super }}
+<script type="text/javascript"src="{% static "ln2xsite/js/pages/event_page.js" %}"></script>
+<script src="https://unpkg.com/masonry-layout/dist/masonry.pkgd.js"></script>
+{% endblock %}
+
+{% block extra_jquery_init %}
+{{ block.super }}
+$('.counter').counterUp({
+    delay: 10,
+    time: 1000
+});
+ProgressBar.initProgressBarHorizontal();
+var map = new GMaps({
+    div: '#map',
+    lat: 51.5467879, 
+    lng: -0.1812998,
+    zoom: 4,
+    scrollwheel: false
+});
+GMaps.geocode({
+address: '{% if event.address != '' and event.address != None and event.venue_name != '' and event.address != 'TBD' and event.address != 'TBA' %}{{ event.address }} {% else %}{% if event.city != 'TBD' and event.city != 'TBA' %}{{ event.city }}, {% endif %}{{ event.country }}{% endif %}',
+    callback: function(results, status) {
+        if (status == 'OK') {
+            var latlng = results[0].geometry.location;
+            map.setCenter(latlng.lat(), latlng.lng());
+            map.addMarker({
+                icon: 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+                lat: latlng.lat(),
+                lng: latlng.lng()
+            });
+        }
+    }
+});
+$(".3-col-carousel").owlCarousel({
+    loop: true,
+    center: true,
+    margin: 10,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    autoplaySpeed: 1500,
+    dots: false,
+    items: 1,
+});
+$(".testimonials").owlCarousel({
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplaySpeed: 700,
+    dots: false,
+    items: 2,
+    responsive: {
+        769: {
+            items: 3,
+        },
+        992: {
+            items: 4,
+        }
+    }
+});
+$(".agenda-sessions").owlCarousel({
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    autoplayTimeout: 2000,
+    autoplaySpeed: 700,
+    center: true,
+    dots: false,
+    items: 1,
+    responsive: {
+        769: {
+            items: 2,
+        },
+        992: {
+            items: 3,
+        }
+    }
+});
+$(".speakers, .sponsors").owlCarousel({
+    loop: true,
+    margin: 20,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplaySpeed: 1500,
+    dots: true,
+    items: 3,
+    responsive: {
+        769: {
+            items: 4,
+        },
+        992: {
+            items: 6,
+        }
+    }
+});
+$(".next-sessions").owlCarousel({
+    margin: 10,
+    rewind: true,
+    autoplay: true,
+    autoplayTimeout: 9000,
+    autoplaySpeed: 500,
+    items: 1,
+    responsive: {
+        769: {
+            items: 2,
+        },
+        992: {
+            items: 3,
+        }
+    }
+});
+{% if not request.user_agent.is_mobile %}
+});
+$(window).load(function () {
+$('.grid-boxes').masonry({
+    columnWidth: 15,
+    gutter: 0,
+    itemSelector: '.grid-item',
+});
+{% endif %}
+{% endblock %}
